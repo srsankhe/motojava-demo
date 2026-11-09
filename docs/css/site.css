@@ -5,6 +5,7 @@
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--color-bg); color: var(--color-text); font: var(--text-body); -webkit-font-smoothing: antialiased; }
 img, picture, svg { display: block; max-width: 100%; }
+[hidden] { display: none !important; } /* author display rules (.card, .sheet) must not defeat the hidden attribute */
 h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
 a { color: inherit; }
 button { font: inherit; color: inherit; }
