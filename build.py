@@ -321,7 +321,12 @@ def base_context(site: dict, root: str, page: str) -> dict:
         "updated": esc(site["updated"]),
         "hours_rows": hours_rows(site),
         "partner_links": partner_links(site),
-        "callbar": "",
+        "callbar": (
+            f'<div class="callbar" data-callbar><a class="btn btn-primary" href="tel:{site["tel"]}">Call</a>'
+            f'<a class="btn btn-secondary" href="sms:{site["sms"]}">Text</a></div>'
+            if page in ("bikes", "bike") else ""
+        ),
+        "hours_summary": esc(site["hours_summary"]),
         "extra_scripts": "",
         "description": "Used motorcycles and scooters in San Francisco, inspected and serviced. Demonstration site.",
     }

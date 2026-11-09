@@ -87,6 +87,30 @@ button { font: inherit; color: inherit; }
   .menu-btn { display: none; }
 }
 
+/* ---- Mobile nav sheet ---- */
+.sheet { position: fixed; inset: 0; z-index: 60; }
+.sheet[hidden] { display: none; }
+.sheet-backdrop { position: absolute; inset: 0; background: var(--backdrop); }
+.sheet-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(22rem, 88vw); background: var(--color-surface); display: grid; grid-template-rows: auto 1fr auto; padding: 0 var(--space-5) var(--space-5); overflow-y: auto; transform: translateX(0); animation: sheet-in var(--duration-base) var(--ease); }
+@keyframes sheet-in { from { transform: translateX(100%); } }
+.sheet-head { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); }
+.sheet-head .menu-btn { display: inline-flex; }
+.sheet-nav { display: grid; align-content: start; gap: var(--space-1); padding-top: var(--space-4); }
+.sheet-nav a { font: 600 1.5rem/1.2 var(--font-display); color: var(--ink-800); text-decoration: none; padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
+.sheet-nav a.active { color: var(--red-600); }
+.sheet-tools { display: grid; gap: var(--space-4); padding-top: var(--space-5); }
+.textsize-row { display: flex; align-items: center; justify-content: space-between; }
+.sheet-tools .row .btn { flex: 1; }
+body.sheet-open { overflow: hidden; }
+
+/* ---- Sticky call bar (phones, bikes pages only) ---- */
+.callbar { display: none; }
+@media (max-width: 59.99em) {
+  .callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: flex; gap: var(--space-3); padding: var(--space-3) var(--gutter) calc(var(--space-3) + env(safe-area-inset-bottom)); background: var(--color-surface); border-top: 1px solid var(--color-border); }
+  .callbar .btn { flex: 1; }
+  body[data-page="bikes"], body[data-page="bike"] { padding-bottom: calc(var(--btn-h-md) + var(--space-6)); }
+}
+
 /* ---- Hero ---- */
 .hero { position: relative; background: var(--ink-900); color: var(--white); overflow: hidden; }
 .hero-media img { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; position: absolute; inset: 0; }

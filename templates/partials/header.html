@@ -18,4 +18,35 @@
       </button>
     </div>
   </div>
+  <div id="nav-sheet" class="sheet" data-sheet hidden>
+    <div class="sheet-backdrop" data-sheet-close></div>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="sheet-head">
+        <span class="wordmark">Moto<span>Java</span></span>
+        <button type="button" class="menu-btn" data-sheet-close aria-label="Close menu">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <nav class="sheet-nav" aria-label="Main">
+        <a class="$nav_bikes" href="${root}">Bikes</a>
+        <a class="$nav_service" href="${root}service/">Service</a>
+        <a class="$nav_about" href="${root}about/">About</a>
+        <a class="$nav_visit" href="${root}visit/">Visit</a>
+      </nav>
+      <div class="sheet-tools">
+        <div class="textsize-row">
+          <span class="label">Text size</span>
+          <div class="seg textsize" role="group" aria-label="Text size">
+            <button type="button" data-size="default" aria-pressed="true">A</button>
+            <button type="button" data-size="large" aria-pressed="false">A+</button>
+          </div>
+        </div>
+        <div class="row">
+          <a class="btn btn-primary" href="tel:$tel">Call $phone</a>
+          <a class="btn btn-secondary" href="sms:$sms">Text</a>
+        </div>
+        <p class="small muted">$hours_summary</p>
+      </div>
+    </div>
+  </div>
 </header>

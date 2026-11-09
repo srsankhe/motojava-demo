@@ -35,6 +35,37 @@
       </button>
     </div>
   </div>
+  <div id="nav-sheet" class="sheet" data-sheet hidden>
+    <div class="sheet-backdrop" data-sheet-close></div>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="sheet-head">
+        <span class="wordmark">Moto<span>Java</span></span>
+        <button type="button" class="menu-btn" data-sheet-close aria-label="Close menu">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <nav class="sheet-nav" aria-label="Main">
+        <a class="" href="../">Bikes</a>
+        <a class="" href="../service/">Service</a>
+        <a class="" href="../about/">About</a>
+        <a class="active" href="../visit/">Visit</a>
+      </nav>
+      <div class="sheet-tools">
+        <div class="textsize-row">
+          <span class="label">Text size</span>
+          <div class="seg textsize" role="group" aria-label="Text size">
+            <button type="button" data-size="default" aria-pressed="true">A</button>
+            <button type="button" data-size="large" aria-pressed="false">A+</button>
+          </div>
+        </div>
+        <div class="row">
+          <a class="btn btn-primary" href="tel:+14152559527">Call (415) 255-9527</a>
+          <a class="btn btn-secondary" href="sms:+14152559527">Text</a>
+        </div>
+        <p class="small muted">Tue to Fri 11 am to 6 pm. Sat 12 pm to 5 pm. Sun and Mon by appointment.</p>
+      </div>
+    </div>
+  </div>
 </header>
 
 <main id="main">
