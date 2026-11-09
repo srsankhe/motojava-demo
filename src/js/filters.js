@@ -39,11 +39,17 @@
     if (state.type.length) parts.push('type=' + state.type.join(','));
     if (state.price) parts.push('price=' + state.price);
     var hash = parts.length ? '#' + parts.join('&') : '';
-    if (hash !== location.hash) history.replaceState(null, '', hash || location.pathname + location.search);
+    // Only touch the URL when it is ours: never erase an anchor like #bikes
+    if (hash !== location.hash && (parts.length || isFilterHash(location.hash))) {
+      history.replaceState(null, '', hash || location.pathname + location.search);
+    }
   }
+
+  function isFilterHash(h) { return /^#?(type|price)=/.test(h); }
 
   function readHash() {
     var h = location.hash.replace(/^#/, '');
+    if (h && !isFilterHash(h)) return; // an anchor (#bikes), not a filter: leave state alone
     state.type = []; state.price = '';
     h.split('&').forEach(function (kv) {
       var i = kv.indexOf('=');

@@ -6,8 +6,11 @@ import html
 import json
 import shutil
 import urllib.parse
+from functools import lru_cache
 from pathlib import Path
 from string import Template
+
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
@@ -90,6 +93,31 @@ def spec_line(bike: dict) -> str:
     return " · ".join(esc(p) for p in parts[:3])
 
 
+@lru_cache(maxsize=None)
+def img_size(rel: str) -> tuple[int, int]:
+    """(width, height) of a file under docs/img, read once per build."""
+    with Image.open(DOCS / "img" / rel) as im:
+        return im.size
+
+
+def photo_srcset(slug: str, index: int, root: str) -> str:
+    """srcset with the real width of each variant, smallest first."""
+    parts, seen = [], set()
+    for suffix in ("-480", "-800", ""):
+        rel = f"bikes/{slug}/{index:02d}{suffix}.webp"
+        if not (DOCS / "img" / rel).exists():
+            continue
+        w = img_size(rel)[0]
+        if w in seen:  # source photo smaller than the variant size: same pixels, skip the duplicate
+            continue
+        seen.add(w)
+        parts.append(f"{root}img/{rel} {w}w")
+    return ", ".join(parts)
+
+
+SMS = ""  # set in build() from site.json
+
+
 def card_html(bike: dict, root: str, eager: bool = False) -> str:
     soon = bike["status"] == "coming-soon"
     chip_class, chip_text = CHIP[bike["status"]]
@@ -97,7 +125,11 @@ def card_html(bike: dict, root: str, eager: bool = False) -> str:
     if soon:
         photo = SOON_SVG
         price_html = fmt_price(bike["price"]) if isinstance(bike.get("price"), int) else "Price on arrival"
+        body = urllib.parse.quote(f"Hi MotoJava, is the {title_of(bike)} ready yet?")
+        cta_html = f'<a class="btn btn-ghost btn-sm" href="sms:{SMS}?&body={body}">Ask ›</a>'
     else:
+        cta_html = '<span class="btn btn-ghost btn-sm">Details ›</span>'
+    if not soon:
         src = f'{root}img/bikes/{bike["slug"]}/01-480.webp'
         loading = "eager" if eager else "lazy"
         photo = f'<img src="{src}" width="480" height="360" alt="{title}" loading="{loading}">'
@@ -119,7 +151,7 @@ def card_html(bike: dict, root: str, eager: bool = False) -> str:
         "spec": spec_line(bike),
         "price_mod": " muted price-soon" if soon and not isinstance(bike.get("price"), int) else "",
         "price_html": price_html,
-        "cta": "Ask" if soon else "Details",
+        "cta_html": cta_html,
     }
     return render(read(PARTIALS / "card.html"), ctx)
 
@@ -178,10 +210,12 @@ def bike_page(bike: dict, bikes: list[dict], site: dict) -> str:
     if isinstance(bike.get("was_price"), int):
         price_html += f' <s>{fmt_price(bike["was_price"])}</s>'
     thumbs = "\n".join(
-        f'        <button type="button" role="listitem" data-full="{root}img/bikes/{bike["slug"]}/{i:02d}.webp" aria-label="Photo {i} of {n}">'
+        f'        <button type="button" role="listitem" data-full="{root}img/bikes/{bike["slug"]}/{i:02d}.webp" '
+        f'data-srcset="{photo_srcset(bike["slug"], i, root)}" aria-label="Photo {i} of {n}">'
         f'<img src="{root}img/bikes/{bike["slug"]}/{i:02d}-480.webp" width="480" height="360" alt="" loading="lazy"></button>'
         for i in range(1, n + 1)
     )
+    main_w, main_h = img_size(f'bikes/{bike["slug"]}/01.webp')
     notes = f'<p class="notes">{esc(bike["notes"])}</p>' if bike.get("notes") else ""
     sms_body = urllib.parse.quote(f"Hi MotoJava, I'm interested in the {title}.")
     ctx.update({
@@ -190,6 +224,9 @@ def bike_page(bike: dict, bikes: list[dict], site: dict) -> str:
         "slug": bike["slug"],
         "photo_count": str(n),
         "thumbs": thumbs,
+        "main_srcset": photo_srcset(bike["slug"], 1, root),
+        "main_w": str(main_w),
+        "main_h": str(main_h),
         "chip_class": chip_class,
         "chip_text": chip_text,
         "price_html": price_html,
@@ -326,7 +363,9 @@ def content_pages(site: dict, bikes: list[dict]) -> list[tuple[str, dict, Path]]
     ctx.update({"title": "Visit", "directions": directions_html(site)})
     pages.append(("visit.html", ctx, DOCS / "visit" / "index.html"))
 
-    ctx = base_context(site, root="", page="404")
+    # GitHub Pages serves 404.html at the requested URL (no redirect), so relative
+    # asset paths break on deep URLs; the 404 page alone uses the absolute base path.
+    ctx = base_context(site, root=site.get("base_path", "/"), page="404")
     ctx.update({"title": "Page not found"})
     pages.append(("404.html", ctx, DOCS / "404.html"))
     return pages
@@ -397,7 +436,9 @@ def copy_assets() -> list[Path]:
 
 
 def build(root: Path = ROOT) -> list[Path]:
+    global SMS
     site = load_json(DATA / "site.json")
+    SMS = site["sms"]
     bikes = load_json(DATA / "bikes.json")  # used from Task 5 on
     written: list[Path] = []
 

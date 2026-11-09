@@ -47,18 +47,21 @@ def fit_box(im: Image.Image, size: int) -> Image.Image:
     return im.resize((round(im.width * scale), round(im.height * scale)), Image.Resampling.LANCZOS)
 
 
-def process(url: str, out_dir: Path, index: int) -> tuple[Path, Path]:
+VARIANTS = ((1200, "", 78), (800, "-800", 75), (480, "-480", 75))  # (longest side, suffix, quality)
+
+
+def process(url: str, out_dir: Path, index: int) -> list[Path]:
+    """Write NN.webp (≤1200 on the longer side), NN-800.webp and NN-480.webp."""
     src = download(url)
     out_dir.mkdir(parents=True, exist_ok=True)
-    full = out_dir / f"{index:02d}.webp"
-    thumb = out_dir / f"{index:02d}-480.webp"
-    if full.exists() and thumb.exists():
-        return full, thumb
+    outs = [out_dir / f"{index:02d}{suffix}.webp" for _, suffix, _ in VARIANTS]
+    if all(p.exists() for p in outs):
+        return outs
     with Image.open(src) as im:
         im = ImageOps.exif_transpose(im).convert("RGB")
-        resize_to_width(im, 1200).save(full, "WEBP", quality=80, method=6)
-        fit_box(im, 480).save(thumb, "WEBP", quality=75, method=6)
-    return full, thumb
+        for (size, _, q), out in zip(VARIANTS, outs):
+            fit_box(im, size).save(out, "WEBP", quality=q, method=6)
+    return outs
 
 
 def hero(url: str) -> None:

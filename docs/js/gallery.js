@@ -8,6 +8,15 @@
   var main = gal.querySelector('.gallery-main');
   var thumbs = Array.prototype.slice.call(gal.querySelectorAll('.thumbs button'));
   var srcs = thumbs.map(function (b) { return b.getAttribute('data-full'); });
+  var srcsets = thumbs.map(function (b) { return b.getAttribute('data-srcset') || ''; });
+
+  /* The main <img> uses srcset with width descriptors, so src alone is ignored by the
+     browser's source selection; both must change together. */
+  function setMain(i) {
+    if (srcsets[i]) main.srcset = srcsets[i]; else main.removeAttribute('srcset');
+    main.src = srcs[i];
+    main.alt = label(i);
+  }
   var title = main.getAttribute('alt').replace(/, photo \d+ of \d+$/, '');
   var lbImg = lb.querySelector('.lb-img');
   var counter = lb.querySelector('.lb-counter');
@@ -19,8 +28,7 @@
 
   function select(i) {
     index = (i + srcs.length) % srcs.length;
-    main.src = srcs[index];
-    main.alt = label(index);
+    setMain(index);
     thumbs.forEach(function (b, j) { b.setAttribute('aria-current', j === index ? 'true' : 'false'); });
   }
 
@@ -29,8 +37,7 @@
     lbImg.src = srcs[index];
     lbImg.alt = label(index);
     counter.textContent = (index + 1) + ' of ' + srcs.length;
-    main.src = srcs[index];
-    main.alt = label(index);
+    select(index);
   }
 
   function open(i, fromEl) {

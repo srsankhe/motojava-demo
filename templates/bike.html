@@ -4,7 +4,7 @@
   <div class="bike-layout">
     <figure class="gallery" data-gallery>
       <button type="button" class="gallery-main-btn" data-open aria-label="Open photo full screen">
-        <img class="gallery-main" src="${root}img/bikes/$slug/01.webp" srcset="${root}img/bikes/$slug/01-480.webp 480w, ${root}img/bikes/$slug/01.webp 1200w" sizes="(max-width: 59.99em) 100vw, 720px" width="1200" height="900" alt="$title, photo 1 of $photo_count" fetchpriority="high">
+        <img class="gallery-main" src="${root}img/bikes/$slug/01.webp" srcset="$main_srcset" sizes="(max-width: 59.99em) 100vw, 720px" width="$main_w" height="$main_h" alt="$title, photo 1 of $photo_count" fetchpriority="high">
       </button>
       <div class="thumbs" role="list">
 $thumbs
@@ -18,7 +18,7 @@ $thumbs
       <p class="muted">$spec</p>
       <div class="row cta-row">
         <a class="btn btn-primary" href="tel:$tel">Call about this bike</a>
-        <a class="btn btn-secondary" href="sms:$sms&body=$sms_body">Text us</a>
+        <a class="btn btn-secondary" href="sms:$sms?&body=$sms_body">Text us</a>
       </div>
       <p class="small muted">$financing_text <a href="$financing_url" target="_blank" rel="noopener">$financing_cta</a>.</p>
     </div>

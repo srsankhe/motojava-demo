@@ -16,14 +16,14 @@ HTML_GZIP_MAX = 30 * 1024
 CSS_RAW_MAX = 25 * 1024
 JS_RAW_MAX = 10 * 1024
 ATF_IMG_MAX = 150 * 1024
-ATF_CARDS = 6
+PHONE_DEVICE_PX = 780  # 390 CSS px at DPR 2
 
 
 class Collector(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.links: list[str] = []
-        self.imgs: list[tuple[str, bool]] = []  # (src, eager)
+        self.imgs: list[tuple[str, bool, bool]] = []  # (phone candidate src, eager, inside <picture> with <source>)
         self.has_robots = False
         self.viewport = ""
         self.sources: list[str] = []
@@ -38,7 +38,8 @@ class Collector(HTMLParser):
         if tag == "a" and a.get("href"):
             self.links.append(a["href"])
         elif tag == "img" and a.get("src"):
-            # phone candidate: smallest srcset entry if present, else src
+            # phone candidate: what a 390px DPR-2 phone (780 device px, sizes=100vw) selects:
+            # the smallest srcset width >= 780, else the largest available
             src = a["src"]
             if a.get("srcset"):
                 cands = []
@@ -46,7 +47,8 @@ class Collector(HTMLParser):
                     bits = part.strip().split()
                     w = int(bits[1][:-1]) if len(bits) > 1 and bits[1].endswith("w") else 0
                     cands.append((w, bits[0]))
-                src = min(cands)[1]
+                big_enough = [c for c in cands if c[0] >= PHONE_DEVICE_PX]
+                src = min(big_enough)[1] if big_enough else max(cands)[1]
             self.imgs.append((src, a.get("loading") != "lazy", self._in_picture_with_source))
         elif tag == "picture":
             self._in_picture_with_source = False
@@ -61,12 +63,23 @@ class Collector(HTMLParser):
             self.links.append(a.get("href") or a.get("src"))
 
 
+def base_path() -> str:
+    import json
+    site = json.loads((ROOT / "data" / "site.json").read_text(encoding="utf-8"))
+    return site.get("base_path", "/")
+
+
+BASE = base_path()
+
+
 def resolve(page: Path, ref: str) -> Path | None:
     if re.match(r"^(https?:|mailto:|tel:|sms:|data:|#)", ref):
         return None
     path = unquote(urlsplit(ref).path)
     if not path:
         return None
+    if path.startswith(BASE):  # absolute links on the 404 page are served under the Pages base path
+        path = "/" + path[len(BASE):]
     target = (DOCS / path.lstrip("/")) if path.startswith("/") else (page.parent / path)
     target = target.resolve()
     if target.is_dir():
