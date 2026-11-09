@@ -1,0 +1,62 @@
+<div class="container section bike-page">
+  <nav class="crumbs small" aria-label="Breadcrumb"><a href="${root}#bikes">Bikes</a> › <span>$title</span></nav>
+
+  <div class="bike-layout">
+    <figure class="gallery" data-gallery>
+      <button type="button" class="gallery-main-btn" data-open aria-label="Open photo full screen">
+        <img class="gallery-main" src="${root}img/bikes/$slug/01.webp" width="1200" height="900" alt="$title, photo 1 of $photo_count" fetchpriority="high">
+      </button>
+      <div class="thumbs" role="list">
+$thumbs
+      </div>
+    </figure>
+
+    <div class="bike-summary">
+      <span class="chip $chip_class">$chip_text</span>
+      <h1 class="h1">$title</h1>
+      <p class="price price-lg">$price_html</p>
+      <p class="muted">$spec</p>
+      <div class="row cta-row">
+        <a class="btn btn-primary" href="tel:$tel">Call about this bike</a>
+        <a class="btn btn-secondary" href="sms:$sms&body=$sms_body">Text us</a>
+      </div>
+      <p class="small muted">$financing_text <a href="$financing_url" target="_blank" rel="noopener">$financing_cta</a>.</p>
+    </div>
+  </div>
+
+  <div class="bike-details">
+    <section>
+      <h2 class="h3">Details</h2>
+      <dl class="spec-table">
+$spec_rows
+      </dl>
+      $notes_html
+    </section>
+    <section>
+      <details class="fees">
+        <summary class="h3">$fees_heading</summary>
+        <p>$fees_text</p>
+      </details>
+    </section>
+  </div>
+</div>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>More bikes</h2>
+      <a class="btn btn-ghost" href="${root}#bikes">See all $count ›</a>
+    </div>
+    <div class="grid">
+$more_cards
+    </div>
+  </div>
+</section>
+
+<dialog class="lightbox" data-lightbox aria-label="Photo viewer">
+  <button type="button" class="lb-close" data-close aria-label="Close"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button type="button" class="lb-prev" data-prev aria-label="Previous photo"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <img class="lb-img" src="" alt="">
+  <button type="button" class="lb-next" data-next aria-label="Next photo"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+  <p class="lb-counter small" aria-live="polite"></p>
+</dialog>
