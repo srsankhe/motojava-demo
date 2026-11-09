@@ -247,9 +247,26 @@ a.card:active { border-color: var(--color-border-press); background: var(--color
 .checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
 .checklist li { display: flex; gap: var(--space-2); align-items: flex-start; }
 .checklist .i { flex: 0 0 20px; color: var(--green-700); margin-top: 2px; }
-.person { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5); display: grid; gap: var(--space-2); align-content: start; }
+.team { display: grid; gap: var(--grid-gap); }
+@media (min-width: 37.5em) { .team { grid-template-columns: repeat(2, 1fr); } }
+.person { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5); display: grid; grid-template-columns: auto 1fr; gap: var(--space-4); align-items: start; }
+.person-text { display: grid; gap: var(--space-1); }
 .avatar { display: grid; place-items: center; width: 48px; height: 48px; border-radius: var(--radius-pill); background: var(--ink-900); color: var(--white); font: 700 1.25rem/1 var(--font-display); }
-.avatar-photo { width: 96px; height: 96px; object-fit: cover; }
+.avatar-photo { width: 80px; height: 80px; object-fit: cover; border-radius: var(--radius-pill); }
+
+/* ---- About page: split layouts, photo cards, dark stats, fact list, cta band ---- */
+.split { display: grid; gap: var(--space-6); align-items: center; }
+@media (min-width: 60em) { .split { grid-template-columns: 1fr 1fr; } .split-reverse > :first-child { order: 2; } }
+.photo-card { display: grid; gap: var(--space-2); margin: 0; }
+.photo-card img { width: 100%; height: auto; border-radius: var(--radius-md); object-fit: cover; background: var(--grey-100); }
+.section-dark { background: var(--ink-900); color: var(--grey-300); }
+.section-dark .stat-value { color: var(--white); }
+.section-dark .label { color: var(--grey-300); }
+.facts-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.facts-list li { padding-left: var(--space-4); border-left: 2px solid var(--red-600); }
+.facts-list strong { color: var(--ink-900); font-weight: 600; }
+.cta-band { display: grid; gap: var(--space-5); align-items: center; padding: var(--space-6); background: var(--red-50); border-radius: var(--radius-md); }
+@media (min-width: 60em) { .cta-band { grid-template-columns: 1fr auto; } }
 .form { display: grid; gap: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5); }
 .field { display: grid; gap: var(--space-1); }
 .field span { font: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-text-muted); }

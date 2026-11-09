@@ -198,7 +198,11 @@
     },
     {
       "value": "700+",
-      "label": "New riders started on a Nighthawk 250"
+      "label": "First bikes for new riders"
+    },
+    {
+      "value": "46",
+      "label": "Countries toured"
     }
   ],
   "team": [
@@ -231,6 +235,28 @@
     {
       "from": "From the Golden Gate Bridge",
       "text": "Take 101 South, then Divisadero, Bush, Gough and Otis to Mission Street. Right on Plum, left on Van Ness."
+    }
+  ],
+  "mike_facts": [
+    {
+      "lead": "First bike at 14.",
+      "text": "A Honda Spree scooter, bought while shopping for a car. He named it Killing Spree."
+    },
+    {
+      "lead": "Shop floor to showroom.",
+      "text": "Wrenched at Scuderia during culinary school, then sold bikes at Motorcycles Unlimited."
+    },
+    {
+      "lead": "Teacher.",
+      "text": "Certified MSF instructor who started his own school, Moto Mike Learn to Ride."
+    },
+    {
+      "lead": "Traveler.",
+      "text": "46 countries by motorcycle, a year across Europe, nine trips to the Isle of Man."
+    },
+    {
+      "lead": "Nighthawk 250 evangelist.",
+      "text": "More than 700 of them have gone to new riders through his hands."
     }
   ]
 }

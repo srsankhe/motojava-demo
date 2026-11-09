@@ -21,6 +21,15 @@ SERVICE = {
     "dash": BIKES / "2024-kawasaki-ninja-500-krt" / "14.webp",
     "wheel": BIKES / "2007-suzuki-sv650" / "12.webp",
 }
+# about page: derived from gallery files (3:2) or downloaded from the live site
+ABOUT_GALLERY = {
+    "storefront": BIKES / "2016-honda-cb500x-rally-raid" / "09.webp",
+    "sidewalk": BIKES / "2014-harley-davidson-heritage-softail" / "15.webp",
+}
+ABOUT_LIVE = {  # kept at native size; the live site's own photos are small
+    "workbench": "https://motojava.com/wp-content/uploads/2020/11/fulltune.png",
+    "mike-goldwing": "https://motojava.com/wp-content/uploads/2026/02/IMG_3475-rotated.jpg",
+}
 TEAM = {  # name: (url, crop centering as fractions of width/height)
     "mike": ("https://motojava.com/wp-content/uploads/2020/06/Mike.png", (0.62, 0.22)),
     "kim": ("https://motojava.com/wp-content/uploads/2020/06/Kim.png", (0.5, 0.4)),
@@ -54,11 +63,20 @@ def main() -> int:
         with Image.open(src) as im:
             im = ImageOps.fit(im.convert("RGB"), (1200, 800), Image.Resampling.LANCZOS)  # 3:2 crop
             save_widths(im, OUT / "service" / name, (1200, 600), 78)
+    (OUT / "about").mkdir(parents=True, exist_ok=True)
+    for name, src in ABOUT_GALLERY.items():
+        with Image.open(src) as im:
+            im = ImageOps.fit(im.convert("RGB"), (1200, 800), Image.Resampling.LANCZOS)
+            save_widths(im, OUT / "about" / name, (1200, 600), 78)
+    for name, url in ABOUT_LIVE.items():
+        with Image.open(download(url)) as im:
+            im = ImageOps.exif_transpose(im).convert("RGB")
+            im.save(OUT / "about" / f"{name}.webp", "WEBP", quality=82, method=6)
     for name, (url, centering) in TEAM.items():
         with Image.open(download(url)) as im:
             im = ImageOps.fit(im.convert("RGB"), (320, 320), Image.Resampling.LANCZOS, centering=centering)
             im.save(OUT / "team" / f"{name}.webp", "WEBP", quality=80, method=6)
-    sizes = {p.name: p.stat().st_size // 1024 for p in list((OUT / "service").glob("*.webp")) + list((OUT / "team").glob("*.webp"))}
+    sizes = {p.name: p.stat().st_size // 1024 for d in ("service", "team", "about") for p in (OUT / d).glob("*.webp")}
     print(sizes)
     return 0
 

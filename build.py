@@ -263,10 +263,16 @@ def team_html(site: dict, root: str = "../") -> str:
         else:
             avatar = f'<span class="avatar" aria-hidden="true">{esc(t["name"][0])}</span>'
         out.append(
-            f'      <div class="person">{avatar}<h3 class="h3">{esc(t["name"])}</h3>'
-            f'<span class="label">{esc(t["role"])}</span><p class="small">{esc(t["bio"])}</p></div>'
+            f'      <div class="person">{avatar}<div class="person-text"><h3 class="h3">{esc(t["name"])}</h3>'
+            f'<span class="label">{esc(t["role"])}</span><p class="small">{esc(t["bio"])}</p></div></div>'
         )
     return "\n".join(out)
+
+
+def facts_list(items: list[dict]) -> str:
+    return "\n".join(
+        f'        <li><strong>{esc(f["lead"])}</strong> {esc(f["text"])}</li>' for f in items
+    )
 
 
 def list_items(items: list[str]) -> str:
@@ -311,7 +317,7 @@ def content_pages(site: dict, bikes: list[dict]) -> list[tuple[str, dict, Path]]
     ctx = base_context(site, root="../", page="about")
     ctx.update({
         "title": "About", "stats": stats_html(site), "refurbish": list_items(site["refurbish"]),
-        "team": team_html(site), "citybike_text": esc(site["citybike"]["text"]),
+        "team": team_html(site), "mike_facts": facts_list(site["mike_facts"]),
         "citybike_source": esc(site["citybike"]["source"]),
     })
     pages.append(("about.html", ctx, DOCS / "about" / "index.html"))
