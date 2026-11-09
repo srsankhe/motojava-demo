@@ -40,6 +40,19 @@
     "price_eastbay": "$150",
     "text": "San Francisco $99, East Bay $150. For service or a bike purchase. Delivery is available."
   },
+  "services": [
+    {"name": "Annual maintenance", "price": "From $387.50 + parts", "text": "Keeps the bike running the way it should now and later. Scope varies by make and model, call for specifics.", "icon": "check"},
+    {"name": "Full service", "price": "From $1,007.50 + parts", "text": "Everything in an annual service and much more. Varies by make and model.", "icon": "list"},
+    {"name": "Oil change", "price": "From $77.50 + parts", "text": "Regular oil changes prevent problems and extend the life of the engine.", "icon": "drop"},
+    {"name": "Repairs", "price": "$155 per hour, half-hour minimum", "text": "If something feels different, getting it checked sooner usually costs less and saves time.", "icon": "wrench"},
+    {"name": "Tire change", "price": "From $93", "text": "Mounting and balancing. Bring your own tires or buy through us.", "icon": "tire"}
+  ],
+  "service_intro": "We check and maintain a steady flow of our own bikes, so the shop is set up for yours too. Annual maintenance, full service, oil changes, tires and repairs. As a small shop we are usually booked about a week out.",
+  "kymco": [
+    {"name": "2026 Kymco Like 150i ABS", "price": "$3,299", "note": "83 mpg", "fine": "$350 freight plus tax and fees. Two-year warranty."},
+    {"name": "2026 Kymco People S 150i ABS", "price": "$3,799", "note": "83 mpg", "fine": "$350 freight plus tax and fees. Two-year warranty."},
+    {"name": "2024 Kymco CV3 550", "price": "$11,999", "note": "Three wheels, no motorcycle license required", "fine": "Order only. $450 freight plus tax and fees. Two-year warranty."}
+  ],
   "refurbish": [
     "Tune-up",
     "Manufacturer recommended services brought up to date",

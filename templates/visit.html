@@ -1,0 +1,29 @@
+<section class="section">
+  <div class="container visit-grid">
+    <div class="stack">
+      <h1 class="h1">Visit the shop</h1>
+      <p class="lead">$address_1<br>$address_2</p>
+      <p class="measure">$landmarks</p>
+      <div class="row">
+        <a class="btn btn-primary" href="tel:$tel">Call</a>
+        <a class="btn btn-secondary" href="sms:$sms">Text</a>
+        <a class="btn btn-secondary" href="mailto:$email">Email</a>
+      </div>
+      <a class="btn btn-ghost" href="$maps_url" target="_blank" rel="noopener">Open in Google Maps ›</a>
+    </div>
+    <div class="stack">
+      <h2 class="h3">Hours</h2>
+      $partial_hours
+      <p class="small muted">Sunday and Monday by appointment. Call or text to set one up.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head"><h2>Getting here</h2></div>
+    <div class="grid">
+$directions
+    </div>
+  </div>
+</section>

@@ -167,6 +167,36 @@ a.card:active { border-color: var(--color-border-press); background: var(--color
 .lb-next { right: var(--space-3); top: 50%; transform: translateY(-50%); }
 .lb-counter { position: absolute; bottom: var(--space-4); left: 0; right: 0; text-align: center; color: var(--grey-300); }
 
+/* ---- Content blocks: service, callout, why, stats, team, visit, form ---- */
+.svc { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5); display: grid; gap: var(--space-3); align-content: start; transition: var(--transition-color), var(--transition-lift); }
+.svc:hover { border-color: var(--color-border-hover); box-shadow: var(--shadow-1); }
+.svc-icon { width: 24px; height: 24px; color: var(--ink-700); }
+.svc .from { font: 600 1.25rem/1.2 var(--font-display); color: var(--ink-900); }
+.svc .btn { justify-self: start; }
+.callout { background: var(--color-surface-alt); border-radius: var(--radius-md); padding: var(--space-5); display: grid; gap: var(--space-2); align-content: start; }
+.section-alt .callout { background: var(--color-surface); border: 1px solid var(--color-border); }
+.why { display: grid; gap: var(--space-2); align-content: start; }
+.why-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--red-50); color: var(--red-700); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: var(--space-5); }
+.stat { display: grid; gap: var(--space-1); }
+.stat-value { font: 700 2.5rem/1.1 var(--font-display); color: var(--ink-900); font-variant-numeric: tabular-nums; }
+.about-grid, .visit-grid, .form-layout { display: grid; gap: var(--space-6); }
+@media (min-width: 60em) { .about-grid, .visit-grid, .form-layout { grid-template-columns: 1fr 1fr; align-items: start; } }
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.checklist li { display: flex; gap: var(--space-2); align-items: flex-start; }
+.checklist .i { flex: 0 0 20px; color: var(--green-700); margin-top: 2px; }
+.person { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5); display: grid; gap: var(--space-2); align-content: start; }
+.avatar { display: grid; place-items: center; width: 48px; height: 48px; border-radius: var(--radius-pill); background: var(--ink-900); color: var(--white); font: 700 1.25rem/1 var(--font-display); }
+.form { display: grid; gap: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5); }
+.field { display: grid; gap: var(--space-1); }
+.field span { font: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-text-muted); }
+.field input, .field textarea { font: var(--text-body); color: var(--color-text-heading); background: var(--color-surface); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); min-height: var(--btn-h-md); transition: var(--transition-color); }
+.field textarea { min-height: 6rem; resize: vertical; }
+.field input:focus, .field textarea { outline-offset: 0; }
+.field input:focus, .field textarea:focus { border-color: var(--ink-900); }
+.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--red-600); }
+.form .btn { justify-self: start; }
+
 /* ---- Hours ---- */
 .hours { display: grid; grid-template-columns: max-content 1fr; gap: var(--space-1) var(--space-4); }
 .hours div { display: contents; }

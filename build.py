@@ -209,6 +209,102 @@ def bike_page(bike: dict, bikes: list[dict], site: dict) -> str:
     return ctx
 
 
+ICONS = {
+    "check": '<path d="M20 6L9 17l-5-5"/>',
+    "list": '<path d="M9 5h11M9 12h11M9 19h11M4 5h.01M4 12h.01M4 19h.01"/>',
+    "drop": '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+    "wrench": '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+    "tire": '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/>',
+    "shield": '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    "file": '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>',
+    "tag": '<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1"/>',
+}
+
+
+def icon(name: str, cls: str = "i") -> str:
+    return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{ICONS[name]}</svg>'
+
+
+def service_cards(site: dict) -> str:
+    return "\n".join(
+        f'      <div class="svc">{icon(s["icon"], "i svc-icon")}<h3 class="h3">{esc(s["name"])}</h3>'
+        f'<p class="small muted">{esc(s["text"])}</p><span class="from">{esc(s["price"])}</span>'
+        f'<a class="btn btn-secondary btn-sm" href="#request">Request</a></div>'
+        for s in site["services"]
+    )
+
+
+def stats_html(site: dict) -> str:
+    return "\n".join(
+        f'      <div class="stat"><span class="stat-value">{esc(s["value"])}</span><span class="label">{esc(s["label"])}</span></div>'
+        for s in site["stats"]
+    )
+
+
+def team_html(site: dict) -> str:
+    return "\n".join(
+        f'      <div class="person"><span class="avatar" aria-hidden="true">{esc(t["name"][0])}</span>'
+        f'<h3 class="h3">{esc(t["name"])}</h3><span class="label">{esc(t["role"])}</span><p class="small">{esc(t["bio"])}</p></div>'
+        for t in site["team"]
+    )
+
+
+def list_items(items: list[str]) -> str:
+    return "\n".join(f"        <li>{icon('check')}<span>{esc(i)}</span></li>" for i in items)
+
+
+def directions_html(site: dict) -> str:
+    return "\n".join(
+        f'      <div class="svc"><h3 class="h3">{esc(d["from"])}</h3><p class="small">{esc(d["text"])}</p></div>'
+        for d in site["directions"]
+    )
+
+
+def why_html(site: dict) -> str:
+    icons = ("shield", "file", "tag")
+    return "\n".join(
+        f'      <div class="why"><span class="why-icon">{icon(ic, "i")}</span><h3 class="h3">{esc(w["title"])}</h3><p class="small muted">{esc(w["text"])}</p></div>'
+        for w, ic in zip(site["why"], icons)
+    )
+
+
+def kymco_html(site: dict) -> str:
+    return "\n".join(
+        f'      <div class="callout"><span class="label">New</span><h3 class="h3">{esc(k["name"])}</h3>'
+        f'<span class="price">{esc(k["price"])}</span><span class="small">{esc(k["note"])}</span><span class="small muted">{esc(k["fine"])}</span></div>'
+        for k in site["kymco"]
+    )
+
+
+def content_pages(site: dict, bikes: list[dict]) -> list[tuple[str, dict, Path]]:
+    pages = []
+    ctx = base_context(site, root="../", page="service")
+    ctx.update({
+        "title": "Service and repair", "service_intro": esc(site["service_intro"]),
+        "service_cards": service_cards(site), "tow_heading": esc(site["tow"]["heading"]),
+        "tow_price_sf": site["tow"]["price_sf"], "tow_price_eastbay": site["tow"]["price_eastbay"],
+        "tow_text": esc(site["tow"]["text"]),
+    })
+    pages.append(("service.html", ctx, DOCS / "service" / "index.html"))
+
+    ctx = base_context(site, root="../", page="about")
+    ctx.update({
+        "title": "About", "stats": stats_html(site), "refurbish": list_items(site["refurbish"]),
+        "team": team_html(site), "citybike_text": esc(site["citybike"]["text"]),
+        "citybike_source": esc(site["citybike"]["source"]),
+    })
+    pages.append(("about.html", ctx, DOCS / "about" / "index.html"))
+
+    ctx = base_context(site, root="../", page="visit")
+    ctx.update({"title": "Visit", "directions": directions_html(site)})
+    pages.append(("visit.html", ctx, DOCS / "visit" / "index.html"))
+
+    ctx = base_context(site, root="", page="404")
+    ctx.update({"title": "Page not found"})
+    pages.append(("404.html", ctx, DOCS / "404.html"))
+    return pages
+
+
 def base_context(site: dict, root: str, page: str) -> dict:
     ctx = {
         "root": root,
@@ -248,9 +344,9 @@ def partials(ctx: dict) -> dict:
 
 
 def page(template_name: str, ctx: dict, out_path: Path) -> Path:
-    body = render(read(TEMPLATES / template_name), ctx)
-    full_ctx = {**ctx, **partials(ctx), "content": body}
-    html_out = render(read(TEMPLATES / "base.html"), full_ctx)
+    full_ctx = {**ctx, **partials(ctx)}  # partials first, so body templates can include them
+    body = render(read(TEMPLATES / template_name), full_ctx)
+    html_out = render(read(TEMPLATES / "base.html"), {**full_ctx, "content": body})
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(html_out, encoding="utf-8")
     return out_path
@@ -282,11 +378,16 @@ def build(root: Path = ROOT) -> list[Path]:
     ctx["soon_cards"] = "\n".join(card_html(b, "") for b in soon)
     ctx["count"] = str(len(for_sale))
     ctx["filters"] = filter_chips(for_sale)
+    ctx["why"] = why_html(site)
+    ctx["kymco"] = kymco_html(site)
     ctx["extra_scripts"] = '<script src="js/filters.js" defer></script>'
     written.append(page("index.html", ctx, DOCS / "index.html"))
 
     for b in for_sale:
         written.append(page("bike.html", bike_page(b, bikes, site), DOCS / "bikes" / b["slug"] / "index.html"))
+
+    for template_name, ctx, out in content_pages(site, bikes):
+        written.append(page(template_name, ctx, out))
 
     written.extend(copy_assets())
     return written

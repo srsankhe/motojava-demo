@@ -1,0 +1,43 @@
+<section class="section">
+  <div class="container stack">
+    <h1 class="h1">Service and repair</h1>
+    <p class="lead">$service_intro</p>
+    <div class="row">
+      <a class="btn btn-primary" href="#request">Request a service</a>
+      <a class="btn btn-secondary" href="tel:$tel">Call $phone</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head"><h2>What we do</h2></div>
+    <div class="grid">
+$service_cards
+      <div class="callout">
+        <span class="label">$tow_heading</span>
+        <span class="price">$tow_price_sf <span class="muted small">San Francisco</span></span>
+        <span class="price">$tow_price_eastbay <span class="muted small">East Bay</span></span>
+        <p class="small muted">$tow_text</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="request" class="section">
+  <div class="container form-layout">
+    <div class="stack">
+      <h2>Request a service</h2>
+      <p class="muted measure">Tell us about the bike and the issue. This opens an email to the shop with your details filled in. Or call us at <a href="tel:$tel">$phone</a>.</p>
+      $partial_hours
+    </div>
+    <form class="form" data-service-form data-to="$email" novalidate>
+      <label class="field"><span>Name</span><input name="name" type="text" autocomplete="name" required></label>
+      <label class="field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label>
+      <label class="field"><span>Bike</span><input name="bike" type="text" placeholder="Year, make, model" required></label>
+      <label class="field"><span>What's going on</span><textarea name="issue" rows="4" required></textarea></label>
+      <button class="btn btn-primary" type="submit">Send request</button>
+      <p class="small muted" data-form-note hidden></p>
+    </form>
+  </div>
+</section>
