@@ -97,6 +97,76 @@ button { font: inherit; color: inherit; }
 .hero .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
 @media (min-width: 60em) { .hero-body { min-height: 70vh; padding-bottom: var(--space-9); } }
 
+/* ---- Bike card ---- */
+.card { display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; text-decoration: none; color: inherit; transition: var(--transition-color), var(--transition-lift); }
+a.card:hover { border-color: var(--color-border-hover); box-shadow: var(--shadow-1); transform: translateY(-1px); }
+a.card:hover .btn-ghost { text-decoration: underline; }
+a.card:hover .photo img { transform: scale(var(--photo-hover-scale)); }
+a.card:active { border-color: var(--color-border-press); background: var(--color-surface-press); box-shadow: none; transform: none; }
+.card .photo { position: relative; aspect-ratio: var(--photo-ratio); background: var(--grey-100); overflow: hidden; }
+.card .photo img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-photo); }
+.card .photo .chip { position: absolute; top: var(--space-3); left: var(--space-3); }
+.card .photo.soon { display: grid; place-items: center; color: var(--ink-500); }
+.soon-icon { width: 32px; height: 32px; }
+.card-body { padding: var(--space-4); display: grid; gap: var(--space-1); flex: 1; align-content: start; }
+.card .spec { font: var(--text-small); color: var(--color-text-muted); min-height: 1.25rem; }
+.card-foot { display: flex; justify-content: space-between; align-items: baseline; margin-top: var(--space-2); }
+.price-soon { font: 500 1rem/1.5 var(--font-sans); }
+.card-soon { border-style: dashed; }
+@media (hover: none) { a.card:hover { border-color: var(--color-border); box-shadow: none; transform: none; } a.card:hover .photo img { transform: none; } }
+
+/* ---- Scroller (arriving soon) ---- */
+.scroller { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(15rem, 1fr); gap: var(--grid-gap); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--space-3); scrollbar-width: thin; }
+.scroller > * { scroll-snap-align: start; }
+@media (min-width: 60em) { .scroller { grid-auto-columns: minmax(16rem, 18rem); } }
+
+/* ---- Filters ---- */
+.filters { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+.filters .label { width: 100%; }
+.empty { padding: var(--space-6); text-align: center; color: var(--color-text-muted); border: 1px dashed var(--color-border); border-radius: var(--radius-md); }
+
+/* ---- Bike page ---- */
+.crumbs { margin-bottom: var(--space-4); color: var(--color-text-muted); }
+.crumbs a { color: var(--color-text-muted); }
+.bike-layout { display: grid; gap: var(--space-6); }
+@media (min-width: 60em) { .bike-layout { grid-template-columns: 3fr 2fr; align-items: start; } }
+.gallery-main-btn { display: block; width: 100%; padding: 0; border: 0; background: var(--grey-100); border-radius: var(--radius-md); overflow: hidden; cursor: zoom-in; aspect-ratio: var(--photo-ratio); }
+.gallery-main { width: 100%; height: 100%; object-fit: cover; }
+.thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr)); gap: var(--space-2); margin-top: var(--space-3); }
+.thumbs button { padding: 0; border: 2px solid transparent; border-radius: var(--radius-sm); overflow: hidden; background: var(--grey-100); cursor: pointer; aspect-ratio: var(--photo-ratio); transition: var(--transition-color); }
+.thumbs button img { width: 100%; height: 100%; object-fit: cover; }
+.thumbs button:hover { border-color: var(--ink-500); }
+.thumbs button[aria-current="true"] { border-color: var(--red-600); }
+.bike-summary { display: grid; gap: var(--space-3); align-content: start; }
+.bike-summary .chip { justify-self: start; }
+.price-lg { font-size: 2.25rem; line-height: 1.1; }
+.cta-row .btn { flex: 1; }
+.bike-details { display: grid; gap: var(--space-6); margin-top: var(--space-7); }
+@media (min-width: 60em) { .bike-details { grid-template-columns: 3fr 2fr; } }
+.spec-table { display: grid; grid-template-columns: max-content 1fr; gap: 0 var(--space-5); margin-top: var(--space-4); }
+.spec-table dt, .spec-table dd { padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); }
+.spec-table dt { font: var(--text-label); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-text-muted); align-self: center; }
+.spec-table dd { color: var(--color-text-heading); font-variant-numeric: tabular-nums; }
+.notes { margin-top: var(--space-4); max-width: var(--measure); }
+.fees { background: var(--color-surface-alt); border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); }
+.fees summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.fees summary::-webkit-details-marker { display: none; }
+.fees summary::after { content: "+"; font-weight: 400; color: var(--color-text-muted); }
+.fees[open] summary::after { content: "–"; }
+.fees p { margin-top: var(--space-3); color: var(--color-text); }
+
+/* ---- Lightbox ---- */
+.lightbox { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh; }
+.lightbox::backdrop { background: var(--backdrop); }
+.lb-img { position: absolute; inset: 0; margin: auto; max-width: 92vw; max-height: 84vh; object-fit: contain; border-radius: var(--radius-sm); }
+.lightbox button { position: absolute; display: grid; place-items: center; width: var(--btn-h-md); height: var(--btn-h-md); border: 0; border-radius: var(--radius-pill); background: rgba(255,255,255,0.12); color: var(--white); cursor: pointer; transition: var(--transition-color); }
+.lightbox button:hover { background: rgba(255,255,255,0.24); }
+.lightbox button .i { width: 24px; height: 24px; }
+.lb-close { top: var(--space-4); right: var(--space-4); }
+.lb-prev { left: var(--space-3); top: 50%; transform: translateY(-50%); }
+.lb-next { right: var(--space-3); top: 50%; transform: translateY(-50%); }
+.lb-counter { position: absolute; bottom: var(--space-4); left: 0; right: 0; text-align: center; color: var(--grey-300); }
+
 /* ---- Hours ---- */
 .hours { display: grid; grid-template-columns: max-content 1fr; gap: var(--space-1) var(--space-4); }
 .hours div { display: contents; }
