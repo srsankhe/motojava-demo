@@ -5,24 +5,65 @@
   "tel": "+14152559527",
   "sms": "+14152559527",
   "email": "Info@MotoJava.com",
-  "address": ["145 South Van Ness Avenue", "San Francisco, CA 94103"],
+  "address": [
+    "145 South Van Ness Avenue",
+    "San Francisco, CA 94103"
+  ],
   "landmarks": "Next to the Dainese store, across from Tap Plastics. Two blocks off Market Street.",
   "maps_url": "https://www.google.com/maps/search/?api=1&query=145+South+Van+Ness+Ave+San+Francisco+CA+94103",
   "updated": "November 7, 2026",
   "hours": [
-    {"day": "Sun", "note": "By appointment"},
-    {"day": "Mon", "note": "By appointment"},
-    {"day": "Tue", "open": "11 am", "close": "6 pm"},
-    {"day": "Wed", "open": "11 am", "close": "6 pm"},
-    {"day": "Thu", "open": "11 am", "close": "6 pm"},
-    {"day": "Fri", "open": "11 am", "close": "6 pm"},
-    {"day": "Sat", "open": "12 pm", "close": "5 pm"}
+    {
+      "day": "Sun",
+      "note": "By appointment"
+    },
+    {
+      "day": "Mon",
+      "note": "By appointment"
+    },
+    {
+      "day": "Tue",
+      "open": "11 am",
+      "close": "6 pm"
+    },
+    {
+      "day": "Wed",
+      "open": "11 am",
+      "close": "6 pm"
+    },
+    {
+      "day": "Thu",
+      "open": "11 am",
+      "close": "6 pm"
+    },
+    {
+      "day": "Fri",
+      "open": "11 am",
+      "close": "6 pm"
+    },
+    {
+      "day": "Sat",
+      "open": "12 pm",
+      "close": "5 pm"
+    }
   ],
   "hours_summary": "Tue to Fri 11 am to 6 pm. Sat 12 pm to 5 pm. Sun and Mon by appointment.",
   "partners": [
-    {"name": "Kymco USA", "url": "https://kymcousa.com/scooters/", "note": "New scooters"},
-    {"name": "Moto-Valet", "url": "https://moto-valet.com/", "note": "Bike storage"},
-    {"name": "Roadrunner Financial", "url": "https://los.octane.co/consumer_form/19046", "note": "Financing"}
+    {
+      "name": "Kymco USA",
+      "url": "https://kymcousa.com/scooters/",
+      "note": "New scooters"
+    },
+    {
+      "name": "Moto-Valet",
+      "url": "https://moto-valet.com/",
+      "note": "Bike storage"
+    },
+    {
+      "name": "Roadrunner Financial",
+      "url": "https://los.octane.co/consumer_form/19046",
+      "note": "Financing"
+    }
   ],
   "financing": {
     "heading": "Financing on every bike",
@@ -41,17 +82,90 @@
     "text": "San Francisco $99, East Bay $150. For service or a bike purchase. Delivery is available."
   },
   "services": [
-    {"name": "Annual maintenance", "price": "From $387.50 + parts", "text": "Keeps the bike running the way it should now and later. Scope varies by make and model, call for specifics.", "icon": "check"},
-    {"name": "Full service", "price": "From $1,007.50 + parts", "text": "Everything in an annual service and much more. Varies by make and model.", "icon": "list"},
-    {"name": "Oil change", "price": "From $77.50 + parts", "text": "Regular oil changes prevent problems and extend the life of the engine.", "icon": "drop"},
-    {"name": "Repairs", "price": "$155 per hour, half-hour minimum", "text": "If something feels different, getting it checked sooner usually costs less and saves time.", "icon": "wrench"},
-    {"name": "Tire change", "price": "From $93", "text": "Mounting and balancing. Bring your own tires or buy through us.", "icon": "tire"}
+    {
+      "name": "Annual maintenance",
+      "price": "From $387.50",
+      "text": "Keeps the bike running the way it should now and later. Scope varies by make and model, call for specifics.",
+      "icon": "check",
+      "price_note": "+ parts"
+    },
+    {
+      "name": "Full service",
+      "price": "From $1,007.50",
+      "text": "Everything in an annual service and much more. Varies by make and model.",
+      "icon": "list",
+      "price_note": "+ parts"
+    },
+    {
+      "name": "Oil change",
+      "price": "From $77.50",
+      "text": "Regular oil changes prevent problems and extend the life of the engine.",
+      "icon": "drop",
+      "price_note": "+ parts"
+    },
+    {
+      "name": "Repairs",
+      "price": "$155 / hour",
+      "text": "If something feels different, getting it checked sooner usually costs less and saves time.",
+      "icon": "wrench",
+      "price_note": "Half-hour minimum"
+    },
+    {
+      "name": "Tire change",
+      "price": "From $93",
+      "text": "Mounting and balancing. Bring your own tires or buy through us.",
+      "icon": "tire",
+      "price_note": ""
+    }
   ],
-  "service_intro": "We check and maintain a steady flow of our own bikes, so the shop is set up for yours too. Annual maintenance, full service, oil changes, tires and repairs. As a small shop we are usually booked about a week out.",
+  "service_intro": "We keep our own bikes in top shape before they go on the floor, so the shop is set up for yours too. Maintenance, oil, tires and repairs.",
+  "service_facts": [
+    {
+      "value": "~1 week",
+      "label": "Typical booking lead time"
+    },
+    {
+      "value": "$77.50",
+      "label": "Oil change, from"
+    },
+    {
+      "value": "$99",
+      "label": "Tow-in, San Francisco"
+    }
+  ],
+  "service_steps": [
+    {
+      "title": "Tell us what's up",
+      "text": "Call, text, or send the request below with the bike and the issue."
+    },
+    {
+      "title": "Drop it off, or we fetch it",
+      "text": "Ride in during shop hours, or book the tow-in for $99 in San Francisco."
+    },
+    {
+      "title": "Ride away",
+      "text": "We call with a quote before work starts and again when it's ready."
+    }
+  ],
   "kymco": [
-    {"name": "2026 Kymco Like 150i ABS", "price": "$3,299", "note": "83 mpg", "fine": "$350 freight plus tax and fees. Two-year warranty."},
-    {"name": "2026 Kymco People S 150i ABS", "price": "$3,799", "note": "83 mpg", "fine": "$350 freight plus tax and fees. Two-year warranty."},
-    {"name": "2024 Kymco CV3 550", "price": "$11,999", "note": "Three wheels, no motorcycle license required", "fine": "Order only. $450 freight plus tax and fees. Two-year warranty."}
+    {
+      "name": "2026 Kymco Like 150i ABS",
+      "price": "$3,299",
+      "note": "83 mpg",
+      "fine": "$350 freight plus tax and fees. Two-year warranty."
+    },
+    {
+      "name": "2026 Kymco People S 150i ABS",
+      "price": "$3,799",
+      "note": "83 mpg",
+      "fine": "$350 freight plus tax and fees. Two-year warranty."
+    },
+    {
+      "name": "2024 Kymco CV3 550",
+      "price": "$11,999",
+      "note": "Three wheels, no motorcycle license required",
+      "fine": "Order only. $450 freight plus tax and fees. Two-year warranty."
+    }
   ],
   "refurbish": [
     "Tune-up",
@@ -60,26 +174,63 @@
     "Safety check, at no extra charge"
   ],
   "why": [
-    {"title": "Inspected and serviced", "text": "Every bike gets a tune-up, a 37-point inspection and a safety check before it goes on the floor."},
-    {"title": "Paperwork handled", "text": "We prepare the DMV title transfer and registration so you skip the line."},
-    {"title": "Fair and firm", "text": "Prices are set fairly and stay there. Taxes and fees are extra and explained up front."}
+    {
+      "title": "Inspected and serviced",
+      "text": "Every bike gets a tune-up, a 37-point inspection and a safety check before it goes on the floor."
+    },
+    {
+      "title": "Paperwork handled",
+      "text": "We prepare the DMV title transfer and registration so you skip the line."
+    },
+    {
+      "title": "Fair and firm",
+      "text": "Prices are set fairly and stay there. Taxes and fees are extra and explained up front."
+    }
   ],
   "stats": [
-    {"value": "925+", "label": "Bikes sold"},
-    {"value": "37+", "label": "Years of experience"},
-    {"value": "700+", "label": "New riders started on a Nighthawk 250"}
+    {
+      "value": "925+",
+      "label": "Bikes sold"
+    },
+    {
+      "value": "37+",
+      "label": "Years of experience"
+    },
+    {
+      "value": "700+",
+      "label": "New riders started on a Nighthawk 250"
+    }
   ],
   "team": [
-    {"name": "Mike Ritter", "role": "Co-owner", "bio": "Mike has ridden for more than 25 years and toured in 46 countries. He has been a shop mechanic, a salesman and a certified riding instructor, and ran his own school, Moto Mike Learn to Ride. If you are new to riding, Mike is the person to talk to."},
-    {"name": "Kim Danner", "role": "Co-owner", "bio": "Kim came to riding later than Mike and took to it fast. She runs the shop with him and still says learning to ride was an easy choice."}
+    {
+      "name": "Mike Ritter",
+      "role": "Co-owner",
+      "photo": "mike.webp",
+      "bio": "Mike has ridden for more than 25 years and toured in 46 countries. He has been a shop mechanic, a salesman and a certified riding instructor, and ran his own school, Moto Mike Learn to Ride. If you are new to riding, Mike is the person to talk to."
+    },
+    {
+      "name": "Kim Danner",
+      "role": "Co-owner",
+      "photo": "kim.webp",
+      "bio": "Kim came to riding later than Mike and took to it fast. She runs the shop with him and still says learning to ride was an easy choice."
+    }
   ],
   "citybike": {
     "source": "CityBike, August 2018",
     "text": "Mike's first bike was a Honda Spree scooter he bought at 14 while shopping for a car. He named it Killing Spree. From there came a KZ440, an XS650 and a Honda 400/4 he still owns. He wrenched at Scuderia while in culinary school, sold bikes at Motorcycles Unlimited, became an MSF instructor and started his own school. He has toured 46 countries, including a year in Europe on a Yamaha Fazer and nine trips to the Isle of Man. At MotoJava he estimates more than 700 Nighthawk 250s have passed through his hands to new riders."
   },
   "directions": [
-    {"from": "From the Bay Bridge", "text": "Take US 101 North to exit 434A for Mission Street. Turn right on Plum Street, then left on Van Ness. We are on the right, across from Tap Plastics."},
-    {"from": "From 101 North", "text": "Keep left for the Central Freeway toward Civic Center, then exit 434A for Mission Street. Right on Plum, left on Van Ness."},
-    {"from": "From the Golden Gate Bridge", "text": "Take 101 South, then Divisadero, Bush, Gough and Otis to Mission Street. Right on Plum, left on Van Ness."}
+    {
+      "from": "From the Bay Bridge",
+      "text": "Take US 101 North to exit 434A for Mission Street. Turn right on Plum Street, then left on Van Ness. We are on the right, across from Tap Plastics."
+    },
+    {
+      "from": "From 101 North",
+      "text": "Keep left for the Central Freeway toward Civic Center, then exit 434A for Mission Street. Right on Plum, left on Van Ness."
+    },
+    {
+      "from": "From the Golden Gate Bridge",
+      "text": "Take 101 South, then Divisadero, Bush, Gough and Otis to Mission Street. Right on Plum, left on Van Ness."
+    }
   ]
 }

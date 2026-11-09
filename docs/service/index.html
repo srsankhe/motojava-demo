@@ -69,41 +69,81 @@
 </header>
 
 <main id="main">
-<section class="section">
-  <div class="container stack">
-    <h1 class="h1">Service and repair</h1>
-    <p class="lead">We check and maintain a steady flow of our own bikes, so the shop is set up for yours too. Annual maintenance, full service, oil changes, tires and repairs. As a small shop we are usually booked about a week out.</p>
+<section class="band">
+  <picture class="band-media">
+    <source media="(max-width: 59.99em)" srcset="../img/service/engine-600.webp">
+    <img src="../img/service/engine.webp" alt="" width="1200" height="800" fetchpriority="high">
+  </picture>
+  <div class="container band-body">
+    <h1 class="display">Service and repair</h1>
+    <p class="lead">We keep our own bikes in top shape before they go on the floor, so the shop is set up for yours too. Maintenance, oil, tires and repairs.</p>
     <div class="row">
       <a class="btn btn-primary" href="#request">Request a service</a>
       <a class="btn btn-secondary" href="tel:+14152559527">Call (415) 255-9527</a>
     </div>
+    <ul class="facts">
+      <li><span class="fact-value">~1 week</span><span class="small">Typical booking lead time</span></li>
+      <li><span class="fact-value">$77.50</span><span class="small">Oil change, from</span></li>
+      <li><span class="fact-value">$99</span><span class="small">Tow-in, San Francisco</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container menu-layout">
+    <div>
+      <div class="section-head"><h2>The menu</h2><span class="small muted">Prices are starting points. Parts are extra.</span></div>
+      <ol class="menu">
+      <li class="menu-row"><span class="menu-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><div class="menu-text"><h3 class="h3">Annual maintenance</h3><p class="small muted">Keeps the bike running the way it should now and later. Scope varies by make and model, call for specifics.</p></div><span class="menu-price">From $387.50<small>+ parts</small></span></li>
+      <li class="menu-row"><span class="menu-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h11M9 12h11M9 19h11M4 5h.01M4 12h.01M4 19h.01"/></svg></span><div class="menu-text"><h3 class="h3">Full service</h3><p class="small muted">Everything in an annual service and much more. Varies by make and model.</p></div><span class="menu-price">From $1,007.50<small>+ parts</small></span></li>
+      <li class="menu-row"><span class="menu-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span><div class="menu-text"><h3 class="h3">Oil change</h3><p class="small muted">Regular oil changes prevent problems and extend the life of the engine.</p></div><span class="menu-price">From $77.50<small>+ parts</small></span></li>
+      <li class="menu-row"><span class="menu-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><div class="menu-text"><h3 class="h3">Repairs</h3><p class="small muted">If something feels different, getting it checked sooner usually costs less and saves time.</p></div><span class="menu-price">$155 / hour<small>Half-hour minimum</small></span></li>
+      <li class="menu-row"><span class="menu-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg></span><div class="menu-text"><h3 class="h3">Tire change</h3><p class="small muted">Mounting and balancing. Bring your own tires or buy through us.</p></div><span class="menu-price">From $93<small></small></span></li>
+      </ol>
+    </div>
+    <aside class="stack">
+      <div class="callout callout-accent">
+        <span class="label">Tow-in special</span>
+        <div class="row" style="gap: var(--space-5)">
+          <span><span class="price">$99</span><br><span class="small muted">San Francisco</span></span>
+          <span><span class="price">$150</span><br><span class="small muted">East Bay</span></span>
+        </div>
+        <p class="small">San Francisco $99, East Bay $150. For service or a bike purchase. Delivery is available.</p>
+        <a class="btn btn-secondary btn-sm" href="tel:+14152559527">Book a tow</a>
+      </div>
+      <div class="callout">
+        <span class="label">Buying a bike here?</span>
+        <p class="small">Every bike on the floor already had this done: tune-up, services brought up to date, 37-point inspection, safety check. No extra charge.</p>
+        <a class="btn btn-ghost btn-sm" href="../#bikes">See the bikes ›</a>
+      </div>
+    </aside>
   </div>
 </section>
 
 <section class="section section-alt">
   <div class="container">
-    <div class="section-head"><h2>What we do</h2></div>
-    <div class="grid">
-      <div class="svc"><svg class="i svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><h3 class="h3">Annual maintenance</h3><p class="small muted">Keeps the bike running the way it should now and later. Scope varies by make and model, call for specifics.</p><span class="from">From $387.50 + parts</span><a class="btn btn-secondary btn-sm" href="#request">Request</a></div>
-      <div class="svc"><svg class="i svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h11M9 12h11M9 19h11M4 5h.01M4 12h.01M4 19h.01"/></svg><h3 class="h3">Full service</h3><p class="small muted">Everything in an annual service and much more. Varies by make and model.</p><span class="from">From $1,007.50 + parts</span><a class="btn btn-secondary btn-sm" href="#request">Request</a></div>
-      <div class="svc"><svg class="i svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg><h3 class="h3">Oil change</h3><p class="small muted">Regular oil changes prevent problems and extend the life of the engine.</p><span class="from">From $77.50 + parts</span><a class="btn btn-secondary btn-sm" href="#request">Request</a></div>
-      <div class="svc"><svg class="i svc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><h3 class="h3">Repairs</h3><p class="small muted">If something feels different, getting it checked sooner usually costs less and saves time.</p><span class="from">$155 per hour, half-hour minimum</span><a class="btn btn-secondary btn-sm" href="#request">Request</a></div>
-      <div class="svc"><svg class="i svc-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg><h3 class="h3">Tire change</h3><p class="small muted">Mounting and balancing. Bring your own tires or buy through us.</p><span class="from">From $93</span><a class="btn btn-secondary btn-sm" href="#request">Request</a></div>
-      <div class="callout">
-        <span class="label">Tow-in special</span>
-        <span class="price">$99 <span class="muted small">San Francisco</span></span>
-        <span class="price">$150 <span class="muted small">East Bay</span></span>
-        <p class="small muted">San Francisco $99, East Bay $150. For service or a bike purchase. Delivery is available.</p>
-      </div>
-    </div>
+    <div class="section-head"><h2>How it works</h2></div>
+    <ol class="steps">
+      <li class="step"><span class="step-num" aria-hidden="true">1</span><h3 class="h3">Tell us what&#x27;s up</h3><p class="small muted">Call, text, or send the request below with the bike and the issue.</p></li>
+      <li class="step"><span class="step-num" aria-hidden="true">2</span><h3 class="h3">Drop it off, or we fetch it</h3><p class="small muted">Ride in during shop hours, or book the tow-in for $99 in San Francisco.</p></li>
+      <li class="step"><span class="step-num" aria-hidden="true">3</span><h3 class="h3">Ride away</h3><p class="small muted">We call with a quote before work starts and again when it&#x27;s ready.</p></li>
+    </ol>
   </div>
 </section>
+
+<div class="strip" aria-hidden="true">
+  <img src="../img/service/brake-600.webp" alt="" width="600" height="400" loading="lazy">
+  <img src="../img/service/dash-600.webp" alt="" width="600" height="400" loading="lazy">
+  <img src="../img/service/wheel-600.webp" alt="" width="600" height="400" loading="lazy">
+  <img src="../img/service/engine-600.webp" alt="" width="600" height="400" loading="lazy">
+</div>
 
 <section id="request" class="section">
   <div class="container form-layout">
     <div class="stack">
       <h2>Request a service</h2>
       <p class="muted measure">Tell us about the bike and the issue. This opens an email to the shop with your details filled in. Or call us at <a href="tel:+14152559527">(415) 255-9527</a>.</p>
+      <h3 class="h3">Shop hours</h3>
       <dl class="hours" data-hours>
   <div data-day="Sun"><dt>Sun</dt><dd>By appointment</dd></div>
   <div data-day="Mon"><dt>Mon</dt><dd>By appointment</dd></div>

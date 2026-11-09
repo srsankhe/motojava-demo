@@ -225,12 +225,26 @@ def icon(name: str, cls: str = "i") -> str:
     return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{ICONS[name]}</svg>'
 
 
-def service_cards(site: dict) -> str:
+def service_rows(site: dict) -> str:
     return "\n".join(
-        f'      <div class="svc">{icon(s["icon"], "i svc-icon")}<h3 class="h3">{esc(s["name"])}</h3>'
-        f'<p class="small muted">{esc(s["text"])}</p><span class="from">{esc(s["price"])}</span>'
-        f'<a class="btn btn-secondary btn-sm" href="#request">Request</a></div>'
+        f'      <li class="menu-row"><span class="menu-icon">{icon(s["icon"])}</span>'
+        f'<div class="menu-text"><h3 class="h3">{esc(s["name"])}</h3><p class="small muted">{esc(s["text"])}</p></div>'
+        f'<span class="menu-price">{esc(s["price"])}<small>{esc(s.get("price_note", ""))}</small></span></li>'
         for s in site["services"]
+    )
+
+
+def service_facts(site: dict) -> str:
+    return "\n".join(
+        f'      <li><span class="fact-value">{esc(f["value"])}</span><span class="small">{esc(f["label"])}</span></li>'
+        for f in site["service_facts"]
+    )
+
+
+def service_steps(site: dict) -> str:
+    return "\n".join(
+        f'      <li class="step"><span class="step-num" aria-hidden="true">{i}</span><h3 class="h3">{esc(s["title"])}</h3><p class="small muted">{esc(s["text"])}</p></li>'
+        for i, s in enumerate(site["service_steps"], start=1)
     )
 
 
@@ -241,12 +255,18 @@ def stats_html(site: dict) -> str:
     )
 
 
-def team_html(site: dict) -> str:
-    return "\n".join(
-        f'      <div class="person"><span class="avatar" aria-hidden="true">{esc(t["name"][0])}</span>'
-        f'<h3 class="h3">{esc(t["name"])}</h3><span class="label">{esc(t["role"])}</span><p class="small">{esc(t["bio"])}</p></div>'
-        for t in site["team"]
-    )
+def team_html(site: dict, root: str = "../") -> str:
+    out = []
+    for t in site["team"]:
+        if t.get("photo"):
+            avatar = f'<img class="avatar avatar-photo" src="{root}img/team/{t["photo"]}" width="320" height="320" alt="{esc(t["name"])}" loading="lazy">'
+        else:
+            avatar = f'<span class="avatar" aria-hidden="true">{esc(t["name"][0])}</span>'
+        out.append(
+            f'      <div class="person">{avatar}<h3 class="h3">{esc(t["name"])}</h3>'
+            f'<span class="label">{esc(t["role"])}</span><p class="small">{esc(t["bio"])}</p></div>'
+        )
+    return "\n".join(out)
 
 
 def list_items(items: list[str]) -> str:
@@ -281,7 +301,8 @@ def content_pages(site: dict, bikes: list[dict]) -> list[tuple[str, dict, Path]]
     ctx = base_context(site, root="../", page="service")
     ctx.update({
         "title": "Service and repair", "service_intro": esc(site["service_intro"]),
-        "service_cards": service_cards(site), "tow_heading": esc(site["tow"]["heading"]),
+        "service_rows": service_rows(site), "service_facts": service_facts(site),
+        "service_steps": service_steps(site), "tow_heading": esc(site["tow"]["heading"]),
         "tow_price_sf": site["tow"]["price_sf"], "tow_price_eastbay": site["tow"]["price_eastbay"],
         "tow_text": esc(site["tow"]["text"]),
     })
