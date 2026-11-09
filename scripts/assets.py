@@ -53,7 +53,31 @@ def save_widths(im: Image.Image, stem: Path, widths: tuple[int, ...], quality: i
         out.save(stem.with_name(f"{stem.name}{suffix}.webp"), "WEBP", quality=quality, method=6)
 
 
+BRAND = {
+    "logo": "https://motojava.com/wp-content/uploads/2020/10/Logo-100.png",       # standalone wordmark, transparent
+    "lockup": "https://motojava.com/wp-content/uploads/2024/11/motojava-logo-with-kymco-2.png",
+}
+
+
+def brand() -> None:
+    """Their real wordmark as-is (PNG, keeps transparency) and the Kymco mark cropped from the lock-up."""
+    (OUT / "brand").mkdir(parents=True, exist_ok=True)
+    with Image.open(download(BRAND["logo"])) as im:
+        im.convert("RGBA").save(OUT / "brand" / "motojava-logo.png", optimize=True)
+    with Image.open(download(BRAND["lockup"])) as im:
+        im = im.convert("RGB")
+        w, h = im.size
+        band = im.crop((0, int(h * 0.50), w, int(h * 0.82)))  # the KYMCO row, between the wordmark and the tagline
+        # trim white margins
+        bg = Image.new("RGB", band.size, (255, 255, 255))
+        bbox = Image.eval(ImageOps.grayscale(band), lambda v: 255 - v if v < 240 else 0).getbbox()
+        if bbox:
+            band = band.crop(bbox)
+        band.save(OUT / "brand" / "kymco.png", optimize=True)
+
+
 def main() -> int:
+    brand()
     (OUT / "service").mkdir(parents=True, exist_ok=True)
     (OUT / "team").mkdir(parents=True, exist_ok=True)
     for name, src in SERVICE.items():
@@ -76,7 +100,7 @@ def main() -> int:
         with Image.open(download(url)) as im:
             im = ImageOps.fit(im.convert("RGB"), (320, 320), Image.Resampling.LANCZOS, centering=centering)
             im.save(OUT / "team" / f"{name}.webp", "WEBP", quality=80, method=6)
-    sizes = {p.name: p.stat().st_size // 1024 for d in ("service", "team", "about") for p in (OUT / d).glob("*.webp")}
+    sizes = {p.name: p.stat().st_size // 1024 for d in ("service", "team", "about", "brand") for p in (OUT / d).glob("*.*")}
     print(sizes)
     return 0
 
