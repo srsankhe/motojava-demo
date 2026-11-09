@@ -76,22 +76,33 @@ def brand() -> None:
         band.save(OUT / "brand" / "kymco.png", optimize=True)
 
 
-KYMCO = {  # new-scooter cards: shop-owned photos only (kymcousa.com blocks automated fetches)
-    "cv3": RAW_IMG / "IMG_1231-compressed.jpg",                 # the 2024 CV3 itself, in front of the shop
-    "like": BIKES / "2019-kymco-like-150i" / "02.webp",          # same body as the 2026 Like 150i; captioned as 2019
+KYMCO = {  # 2026 product cutouts captured from kymcousa.com in the user's browser (credited on the page)
+    "cv3": RAW_IMG / "kymco-cv3-2026.png",
+    "like": RAW_IMG / "kymco-like-150i-2026.png",
+    "people": RAW_IMG / "kymco-people-s-150i-2026.png",
 }
+
+
+def trim_white(im: Image.Image, threshold: int = 245) -> Image.Image:
+    """Crop away the white margins around a product cutout."""
+    gray = ImageOps.grayscale(im)
+    mask = gray.point(lambda v: 255 if v < threshold else 0)
+    bbox = mask.getbbox()
+    return im.crop(bbox) if bbox else im
 
 
 def kymco() -> None:
     (OUT / "kymco").mkdir(parents=True, exist_ok=True)
     for name, src in KYMCO.items():
-        if not src.exists() and name == "cv3":
-            src = download("https://motojava.com/wp-content/uploads/2025/04/IMG_1231-compressed.jpg")
         with Image.open(src) as im:
-            im = ImageOps.exif_transpose(im).convert("RGB")
-            w = min(1200, im.width)
-            im = ImageOps.fit(im, (w, round(w * 3 / 4)), Image.Resampling.LANCZOS)  # 4:3 like the bike cards
-            save_widths(im, OUT / "kymco" / name, tuple(sorted({480, w})), 78)
+            im = trim_white(im.convert("RGB"))
+            # pad (never crop) onto white to 4:3, with breathing room, so the whole scooter shows in the card
+            w = min(1200, int(im.width * 1.12))
+            canvas = Image.new("RGB", (w, round(w * 3 / 4)), (255, 255, 255))
+            scale = min((w * 0.9) / im.width, (canvas.height * 0.86) / im.height)
+            fitted = im.resize((round(im.width * scale), round(im.height * scale)), Image.Resampling.LANCZOS)
+            canvas.paste(fitted, ((w - fitted.width) // 2, (canvas.height - fitted.height) // 2))
+            save_widths(canvas, OUT / "kymco" / name, (w, 480) if w > 480 else (480,), 80)
 
 
 def main() -> int:

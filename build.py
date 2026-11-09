@@ -471,6 +471,7 @@ def build(root: Path = ROOT) -> list[Path]:
     ctx["filters"] = filter_chips(for_sale)
     ctx["why"] = why_html(site)
     ctx["kymco"] = kymco_html(site, root)
+    ctx["kymco_credit"] = esc(site["kymco_credit"])
     ctx["extra_scripts"] = f'<script src="{root}js/filters.js" defer></script>'
     written.append(page("bikes.html", ctx, DOCS / "bikes" / "index.html"))
 
