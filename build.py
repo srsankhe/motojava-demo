@@ -331,12 +331,25 @@ def why_html(site: dict) -> str:
     )
 
 
-def kymco_html(site: dict) -> str:
-    return "\n".join(
-        f'      <div class="callout"><span class="label">New</span><h3 class="h3">{esc(k["name"])}</h3>'
-        f'<span class="price">{esc(k["price"])}</span><span class="small">{esc(k["note"])}</span><span class="small muted">{esc(k["fine"])}</span></div>'
-        for k in site["kymco"]
-    )
+def kymco_html(site: dict, root: str = "../") -> str:
+    out = []
+    for k in site["kymco"]:
+        if k.get("photo"):
+            rel = f'kymco/{k["photo"]}'
+            full = rel + ".webp"
+            w = img_size(full)[0]
+            srcset = f'{root}img/{rel}-480.webp 480w' + (f', {root}img/{full} {w}w' if w > 480 else "")
+            photo = (f'<img src="{root}img/{full}" srcset="{srcset}" sizes="(max-width: 59.99em) 100vw, 380px" '
+                     f'width="{w}" height="{round(w * 3 / 4)}" alt="{esc(k["name"])}" loading="lazy">')
+        else:
+            photo = f'<div class="kymco-placeholder"><img src="{root}img/brand/kymco.png" alt="" width="200" height="31"></div>'
+        out.append(
+            f'      <div class="card kymco-card"><div class="photo">{photo}<span class="chip chip-sale">New</span></div>'
+            f'<div class="card-body"><h3 class="h3">{esc(k["name"])}</h3><p class="spec">{esc(k["note"])}</p>'
+            f'<div class="card-foot"><span class="price">{esc(k["price"])}</span></div>'
+            f'<p class="small muted">{esc(k["fine"])}</p><p class="small muted photo-note">{esc(k.get("photo_note", ""))}</p></div></div>'
+        )
+    return "\n".join(out)
 
 
 def content_pages(site: dict, bikes: list[dict]) -> list[tuple[str, dict, Path]]:
@@ -457,7 +470,7 @@ def build(root: Path = ROOT) -> list[Path]:
     ctx["count"] = str(len(for_sale))
     ctx["filters"] = filter_chips(for_sale)
     ctx["why"] = why_html(site)
-    ctx["kymco"] = kymco_html(site)
+    ctx["kymco"] = kymco_html(site, root)
     ctx["extra_scripts"] = f'<script src="{root}js/filters.js" defer></script>'
     written.append(page("bikes.html", ctx, DOCS / "bikes" / "index.html"))
 

@@ -142,6 +142,10 @@ a.card:active { border-color: var(--color-border-press); background: var(--color
 @media (hover: none) { a.card:hover { border-color: var(--color-border); box-shadow: none; transform: none; } a.card:hover .photo img { transform: none; } }
 
 .kymco-band { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+.kymco-card .card-body { gap: var(--space-2); }
+.kymco-card .photo-note { font-size: 0.75rem; }
+.kymco-placeholder { height: 100%; display: grid; place-items: center; background: var(--grey-100); }
+.card .photo .kymco-placeholder img { width: 50%; height: auto; object-fit: contain; opacity: 0.55; transition: none; }
 .kymco-band .section-head { align-items: center; }
 
 /* ---- Scroller (arriving soon) ---- */

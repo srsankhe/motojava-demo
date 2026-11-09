@@ -152,19 +152,25 @@
       "name": "2026 Kymco Like 150i ABS",
       "price": "$3,299",
       "note": "83 mpg",
-      "fine": "$350 freight plus tax and fees. Two-year warranty."
+      "fine": "$350 freight plus tax and fees. Two-year warranty.",
+      "photo": "like",
+      "photo_note": "Shown: a 2019 Like 150, same body"
     },
     {
       "name": "2026 Kymco People S 150i ABS",
       "price": "$3,799",
       "note": "83 mpg",
-      "fine": "$350 freight plus tax and fees. Two-year warranty."
+      "fine": "$350 freight plus tax and fees. Two-year warranty.",
+      "photo": null,
+      "photo_note": "Photo on request"
     },
     {
       "name": "2024 Kymco CV3 550",
       "price": "$11,999",
       "note": "Three wheels, no motorcycle license required",
-      "fine": "Order only. $450 freight plus tax and fees. Two-year warranty."
+      "fine": "Order only. $450 freight plus tax and fees. Two-year warranty.",
+      "photo": "cv3",
+      "photo_note": "In front of the shop"
     }
   ],
   "refurbish": [

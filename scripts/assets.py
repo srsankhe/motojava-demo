@@ -76,8 +76,27 @@ def brand() -> None:
         band.save(OUT / "brand" / "kymco.png", optimize=True)
 
 
+KYMCO = {  # new-scooter cards: shop-owned photos only (kymcousa.com blocks automated fetches)
+    "cv3": RAW_IMG / "IMG_1231-compressed.jpg",                 # the 2024 CV3 itself, in front of the shop
+    "like": BIKES / "2019-kymco-like-150i" / "02.webp",          # same body as the 2026 Like 150i; captioned as 2019
+}
+
+
+def kymco() -> None:
+    (OUT / "kymco").mkdir(parents=True, exist_ok=True)
+    for name, src in KYMCO.items():
+        if not src.exists() and name == "cv3":
+            src = download("https://motojava.com/wp-content/uploads/2025/04/IMG_1231-compressed.jpg")
+        with Image.open(src) as im:
+            im = ImageOps.exif_transpose(im).convert("RGB")
+            w = min(1200, im.width)
+            im = ImageOps.fit(im, (w, round(w * 3 / 4)), Image.Resampling.LANCZOS)  # 4:3 like the bike cards
+            save_widths(im, OUT / "kymco" / name, tuple(sorted({480, w})), 78)
+
+
 def main() -> int:
     brand()
+    kymco()
     (OUT / "service").mkdir(parents=True, exist_ok=True)
     (OUT / "team").mkdir(parents=True, exist_ok=True)
     for name, src in SERVICE.items():
