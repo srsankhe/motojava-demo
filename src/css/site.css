@@ -287,6 +287,11 @@ a.card:active { border-color: var(--color-border-press); background: var(--color
 .field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--red-600); }
 .form .btn { justify-self: start; }
 
+/* ---- Map (Visit) ---- */
+.map-wrap { display: grid; gap: var(--space-2); }
+.map-embed { display: block; width: 100%; aspect-ratio: 16 / 9; max-height: 480px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--grey-100); }
+@media (max-width: 37.49em) { .map-embed { aspect-ratio: 4 / 3; } }
+
 /* ---- Hours ---- */
 .hours { display: grid; grid-template-columns: max-content 1fr; gap: var(--space-1) var(--space-4); }
 .hours div { display: contents; }

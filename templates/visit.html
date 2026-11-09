@@ -21,8 +21,15 @@
 
 <section class="section section-alt">
   <div class="container">
-    <div class="section-head"><h2>Getting here</h2></div>
-    <div class="grid">
+    <div class="section-head">
+      <h2>Getting here</h2>
+      <a class="btn btn-ghost" href="$maps_url" target="_blank" rel="noopener">Open in Google Maps ›</a>
+    </div>
+    <div class="map-wrap">
+      <iframe class="map-embed" title="Map showing MotoJava at 145 South Van Ness Avenue" src="$osm_embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p class="small muted">Map: OpenStreetMap contributors. <a href="$osm_link" target="_blank" rel="noopener">View larger</a>.</p>
+    </div>
+    <div class="grid" style="margin-top: var(--space-6)">
 $directions
     </div>
   </div>

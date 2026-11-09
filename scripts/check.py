@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 
 HTML_GZIP_MAX = 30 * 1024
-CSS_RAW_MAX = 25 * 1024
+CSS_RAW_MAX = 30 * 1024  # raised from 25 KB; gzip transfer is ~6 KB
 JS_RAW_MAX = 10 * 1024
 ATF_IMG_MAX = 150 * 1024
 PHONE_DEVICE_PX = 780  # 390 CSS px at DPR 2

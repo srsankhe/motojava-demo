@@ -15,16 +15,36 @@ RAW_IMG = ROOT / "data" / "raw" / "img"
 UA = "motojava-demo-build"
 
 # service page: (output name, source gallery file)
-SERVICE = {
-    "engine": BIKES / "2012-honda-shadow-750-phantom" / "09.webp",
-    "brake": BIKES / "2014-honda-cbr500r" / "11.webp",
-    "dash": BIKES / "2024-kawasaki-ninja-500-krt" / "14.webp",
-    "wheel": BIKES / "2007-suzuki-sv650" / "12.webp",
+# Sources are the RAW originals (not the resized gallery files) from the three galleries shot at
+# 1800-2560px: 2021 Rebel 500, 2014 CBR500R, 2022 KLR650. Everything else in the library is 480-640px.
+RAW_GALLERY = {  # slug -> list of raw filenames in gallery order, filled by load_raw()
+}
+
+
+def load_raw() -> None:
+    import json
+    raw = [x for x in json.loads((ROOT / "data" / "raw" / "bikes.raw.json").read_text()) if x["section"] == "inventory"]
+    bikes = [b for b in json.loads((ROOT / "data" / "bikes.json").read_text()) if b["status"] in ("for-sale", "pending")]
+    for r, b in zip(raw, bikes):
+        RAW_GALLERY[b["slug"]] = [RAW_IMG / u.rsplit("/", 1)[-1] for u in r["images"]]
+
+
+def raw_photo(slug: str, n: int) -> Path:
+    if not RAW_GALLERY:
+        load_raw()
+    return RAW_GALLERY[slug][n - 1]
+
+
+SERVICE = {  # (slug, photo number) in the hi-res galleries
+    "engine": ("2021-honda-rebel-500", 3),
+    "brake": ("2014-honda-cbr500r", 11),
+    "dash": ("2022-kawasaki-klr650", 11),
+    "wheel": ("2014-honda-cbr500r", 12),
 }
 # about page: derived from gallery files (3:2) or downloaded from the live site
-ABOUT_GALLERY = {
-    "storefront": BIKES / "2016-honda-cb500x-rally-raid" / "09.webp",
-    "sidewalk": BIKES / "2014-harley-davidson-heritage-softail" / "15.webp",
+ABOUT_GALLERY = {  # (slug, photo number) in the hi-res galleries
+    "storefront": ("2022-kawasaki-klr650", 2),
+    "sidewalk": ("2021-honda-rebel-500", 2),
 }
 ABOUT_LIVE = {  # kept at native size; the live site's own photos are small
     "workbench": "https://motojava.com/wp-content/uploads/2020/11/fulltune.png",
@@ -110,18 +130,25 @@ def main() -> int:
     kymco()
     (OUT / "service").mkdir(parents=True, exist_ok=True)
     (OUT / "team").mkdir(parents=True, exist_ok=True)
-    for name, src in SERVICE.items():
+    for name, (slug, n) in SERVICE.items():
+        src = raw_photo(slug, n)
         if not src.exists():
             print(f"missing source {src}")
             return 1
         with Image.open(src) as im:
-            im = ImageOps.fit(im.convert("RGB"), (1200, 800), Image.Resampling.LANCZOS)  # 3:2 crop
+            im = ImageOps.exif_transpose(im).convert("RGB")
+            assert min(im.size) >= 1200, f"{name}: source {src.name} is only {im.size}"
+            im = ImageOps.fit(im, (1200, 800), Image.Resampling.LANCZOS)  # 3:2 crop
             save_widths(im, OUT / "service" / name, (1200, 600), 78)
     (OUT / "about").mkdir(parents=True, exist_ok=True)
-    for name, src in ABOUT_GALLERY.items():
-        with Image.open(src) as im:
-            im = ImageOps.fit(im.convert("RGB"), (1200, 800), Image.Resampling.LANCZOS)
-            save_widths(im, OUT / "about" / name, (1200, 600), 78)
+    for name, (slug, n) in ABOUT_GALLERY.items():
+        with Image.open(raw_photo(slug, n)) as im:
+            im = ImageOps.exif_transpose(im).convert("RGB")
+            assert min(im.size) >= 1200, f"{name}: source is only {im.size}"
+            # the band is wide; a 2:1 crop from the square originals keeps signs and bike
+            size = (1600, 800) if name == "storefront" else (1200, 800)
+            im = ImageOps.fit(im, size, Image.Resampling.LANCZOS, centering=(0.5, 0.55))
+            save_widths(im, OUT / "about" / name, (size[0], 800) if size[0] > 800 else (800,), 78)
     for name, url in ABOUT_LIVE.items():
         with Image.open(download(url)) as im:
             im = ImageOps.exif_transpose(im).convert("RGB")

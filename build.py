@@ -317,10 +317,28 @@ def list_items(items: list[str]) -> str:
 
 
 def directions_html(site: dict) -> str:
-    return "\n".join(
-        f'      <div class="svc"><h3 class="h3">{esc(d["from"])}</h3><p class="small">{esc(d["text"])}</p></div>'
-        for d in site["directions"]
-    )
+    dest = urllib.parse.quote_plus(site["address_query"])
+    out = []
+    for d in site["directions"]:
+        origin = urllib.parse.quote_plus(d["origin"])
+        google = f"https://www.google.com/maps/dir/?api=1&origin={origin}&destination={dest}&travelmode=driving"
+        apple = f"https://maps.apple.com/?saddr={origin}&daddr={dest}&dirflg=d"
+        out.append(
+            f'      <div class="svc"><h3 class="h3">{esc(d["from"])}</h3><p class="small">{esc(d["text"])}</p>'
+            f'<div class="row"><a class="btn btn-secondary btn-sm" href="{esc(google)}" target="_blank" rel="noopener">Route in Google Maps</a>'
+            f'<a class="btn btn-ghost btn-sm" href="{esc(apple)}" target="_blank" rel="noopener">Apple Maps ›</a></div></div>'
+        )
+    return "\n".join(out)
+
+
+def map_context(site: dict) -> dict:
+    lat, lon = site["geo"]["lat"], site["geo"]["lon"]
+    dlon, dlat = 0.006, 0.0032  # about a 1 km wide window
+    bbox = f"{lon - dlon:.5f},{lat - dlat:.5f},{lon + dlon:.5f},{lat + dlat:.5f}"
+    return {
+        "osm_embed": f"https://www.openstreetmap.org/export/embed.html?bbox={bbox}&layer=mapnik&marker={lat:.6f},{lon:.6f}",
+        "osm_link": f"https://www.openstreetmap.org/?mlat={lat:.6f}&mlon={lon:.6f}#map=17/{lat:.5f}/{lon:.5f}",
+    }
 
 
 def why_html(site: dict) -> str:
@@ -365,7 +383,7 @@ def content_pages(site: dict, bikes: list[dict]) -> list[tuple[str, dict, Path]]
     pages.append(("service.html", ctx, DOCS / "service" / "index.html"))
 
     ctx = base_context(site, root="../", page="visit")
-    ctx.update({"title": "Visit", "directions": directions_html(site)})
+    ctx.update({"title": "Visit", "directions": directions_html(site), **map_context(site)})
     pages.append(("visit.html", ctx, DOCS / "visit" / "index.html"))
 
     # GitHub Pages serves 404.html at the requested URL (no redirect), so relative

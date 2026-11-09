@@ -232,15 +232,18 @@
   "directions": [
     {
       "from": "From the Bay Bridge",
-      "text": "Take US 101 North to exit 434A for Mission Street. Turn right on Plum Street, then left on Van Ness. We are on the right, across from Tap Plastics."
+      "text": "Take US 101 North to exit 434A for Mission Street. Turn right on Plum Street, then left on Van Ness. We are on the right, across from Tap Plastics.",
+      "origin": "Bay Bridge, San Francisco, CA"
     },
     {
-      "from": "From 101 North",
-      "text": "Keep left for the Central Freeway toward Civic Center, then exit 434A for Mission Street. Right on Plum, left on Van Ness."
+      "from": "From the Peninsula (101 North)",
+      "text": "Keep left for the Central Freeway toward Civic Center, then exit 434A for Mission Street. Right on Plum, left on Van Ness.",
+      "origin": "San Francisco International Airport, CA"
     },
     {
       "from": "From the Golden Gate Bridge",
-      "text": "Take 101 South, then Divisadero, Bush, Gough and Otis to Mission Street. Right on Plum, left on Van Ness."
+      "text": "Take 101 South, then Divisadero, Bush, Gough and Otis to Mission Street. Right on Plum, left on Van Ness.",
+      "origin": "Golden Gate Bridge, San Francisco, CA"
     }
   ],
   "mike_facts": [
@@ -266,5 +269,10 @@
     }
   ],
   "base_path": "/motojava-demo/",
-  "kymco_credit": "Product photos: Kymco USA. Colors and trim vary; call for what is in stock."
+  "kymco_credit": "Product photos: Kymco USA. Colors and trim vary; call for what is in stock.",
+  "geo": {
+    "lat": 37.7712262,
+    "lon": -122.4176859
+  },
+  "address_query": "145 South Van Ness Avenue, San Francisco, CA 94103"
 }
