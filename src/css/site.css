@@ -141,6 +141,9 @@ a.card:active { border-color: var(--color-border-press); background: var(--color
 .card-soon { border-style: dashed; }
 @media (hover: none) { a.card:hover { border-color: var(--color-border); box-shadow: none; transform: none; } a.card:hover .photo img { transform: none; } }
 
+.kymco-band { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+.kymco-band .section-head { align-items: center; }
+
 /* ---- Scroller (arriving soon) ---- */
 .scroller { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(15rem, 1fr); gap: var(--grid-gap); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--space-3); scrollbar-width: thin; }
 .scroller > * { scroll-snap-align: start; }
