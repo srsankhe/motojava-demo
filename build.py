@@ -379,7 +379,7 @@ def build(root: Path = ROOT) -> list[Path]:
 
     ctx = base_context(site, root="", page="bikes")
     ctx["title"] = "Used bikes in San Francisco"
-    ctx["cards"] = "\n".join(card_html(b, "", eager=i < 6) for i, b in enumerate(for_sale))
+    ctx["cards"] = "\n".join(card_html(b, "") for b in for_sale)  # all lazy: the hero fills the first screen
     ctx["soon_cards"] = "\n".join(card_html(b, "") for b in soon)
     ctx["count"] = str(len(for_sale))
     ctx["filters"] = filter_chips(for_sale)
