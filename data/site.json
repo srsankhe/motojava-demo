@@ -1,0 +1,72 @@
+{
+  "name": "MotoJava",
+  "tagline": "Good used bikes. Fair prices.",
+  "phone": "(415) 255-9527",
+  "tel": "+14152559527",
+  "sms": "+14152559527",
+  "email": "Info@MotoJava.com",
+  "address": ["145 South Van Ness Avenue", "San Francisco, CA 94103"],
+  "landmarks": "Next to the Dainese store, across from Tap Plastics. Two blocks off Market Street.",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=145+South+Van+Ness+Ave+San+Francisco+CA+94103",
+  "updated": "November 7, 2026",
+  "hours": [
+    {"day": "Sun", "note": "By appointment"},
+    {"day": "Mon", "note": "By appointment"},
+    {"day": "Tue", "open": "11 am", "close": "6 pm"},
+    {"day": "Wed", "open": "11 am", "close": "6 pm"},
+    {"day": "Thu", "open": "11 am", "close": "6 pm"},
+    {"day": "Fri", "open": "11 am", "close": "6 pm"},
+    {"day": "Sat", "open": "12 pm", "close": "5 pm"}
+  ],
+  "hours_summary": "Tue to Fri 11 am to 6 pm. Sat 12 pm to 5 pm. Sun and Mon by appointment.",
+  "partners": [
+    {"name": "Kymco USA", "url": "https://kymcousa.com/scooters/", "note": "New scooters"},
+    {"name": "Moto-Valet", "url": "https://moto-valet.com/", "note": "Bike storage"},
+    {"name": "Roadrunner Financial", "url": "https://los.octane.co/consumer_form/19046", "note": "Financing"}
+  ],
+  "financing": {
+    "heading": "Financing on every bike",
+    "text": "Installment loans through Roadrunner Financial. Terms from 12 to 60 months, rates from 9.9%.",
+    "cta": "Check if you qualify",
+    "url": "https://los.octane.co/consumer_form/19046"
+  },
+  "fees": {
+    "heading": "Tax, title and fees",
+    "text": "Sales tax and registration are the same as at the DMV. Title transfer is $15. Our $85 documentation fee covers a DMV runner who stands in line for you."
+  },
+  "tow": {
+    "heading": "Tow-in special",
+    "price_sf": "$99",
+    "price_eastbay": "$150",
+    "text": "San Francisco $99, East Bay $150. For service or a bike purchase. Delivery is available."
+  },
+  "refurbish": [
+    "Tune-up",
+    "Manufacturer recommended services brought up to date",
+    "37-point inspection",
+    "Safety check, at no extra charge"
+  ],
+  "why": [
+    {"title": "Inspected and serviced", "text": "Every bike gets a tune-up, a 37-point inspection and a safety check before it goes on the floor."},
+    {"title": "Paperwork handled", "text": "We prepare the DMV title transfer and registration so you skip the line."},
+    {"title": "Fair and firm", "text": "Prices are set fairly and stay there. Taxes and fees are extra and explained up front."}
+  ],
+  "stats": [
+    {"value": "925+", "label": "Bikes sold"},
+    {"value": "37+", "label": "Years of experience"},
+    {"value": "700+", "label": "New riders started on a Nighthawk 250"}
+  ],
+  "team": [
+    {"name": "Mike Ritter", "role": "Co-owner", "bio": "Mike has ridden for more than 25 years and toured in 46 countries. He has been a shop mechanic, a salesman and a certified riding instructor, and ran his own school, Moto Mike Learn to Ride. If you are new to riding, Mike is the person to talk to."},
+    {"name": "Kim Danner", "role": "Co-owner", "bio": "Kim came to riding later than Mike and took to it fast. She runs the shop with him and still says learning to ride was an easy choice."}
+  ],
+  "citybike": {
+    "source": "CityBike, August 2018",
+    "text": "Mike's first bike was a Honda Spree scooter he bought at 14 while shopping for a car. He named it Killing Spree. From there came a KZ440, an XS650 and a Honda 400/4 he still owns. He wrenched at Scuderia while in culinary school, sold bikes at Motorcycles Unlimited, became an MSF instructor and started his own school. He has toured 46 countries, including a year in Europe on a Yamaha Fazer and nine trips to the Isle of Man. At MotoJava he estimates more than 700 Nighthawk 250s have passed through his hands to new riders."
+  },
+  "directions": [
+    {"from": "From the Bay Bridge", "text": "Take US 101 North to exit 434A for Mission Street. Turn right on Plum Street, then left on Van Ness. We are on the right, across from Tap Plastics."},
+    {"from": "From 101 North", "text": "Keep left for the Central Freeway toward Civic Center, then exit 434A for Mission Street. Right on Plum, left on Van Ness."},
+    {"from": "From the Golden Gate Bridge", "text": "Take 101 South, then Divisadero, Bush, Gough and Otis to Mission Street. Right on Plum, left on Van Ness."}
+  ]
+}

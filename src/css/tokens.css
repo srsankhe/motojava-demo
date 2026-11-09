@@ -1,0 +1,143 @@
+/* MotoJava redesign — design tokens
+   Source: design-language.md (2026-11-09). Values are the single source of truth
+   for the demonstrator build. Components reference the semantic aliases in
+   section "Semantic", never the raw scale directly. */
+
+:root {
+  /* ---- Brand red (existing #C50C1E kept as primary) ---- */
+  --red-50:  #FDF2F3;
+  --red-100: #FBE1E3;
+  --red-600: #C50C1E;
+  --red-700: #A20A19;
+  --red-800: #7F0813;
+
+  /* ---- Ink / neutrals (existing greys named) ---- */
+  --ink-900:  #141414;
+  --ink-800:  #2B2B2B;
+  --ink-700:  #474747;
+  --ink-600:  #666666;
+  --ink-500:  #8A8A8A;
+  --grey-300: #B3B3B3;
+  --grey-200: #E2E2E2;
+  --grey-100: #F2F2F2;
+  --grey-50:  #FAFAFA;
+  --white:    #FFFFFF;
+
+  /* ---- Status ---- */
+  --green-700: #1E7A3C;
+  --green-50:  #E8F5EC;
+  --amber-700: #8A5A00;
+  --amber-50:  #FFF4DF;
+
+  /* ---- Semantic ---- */
+  --color-bg:            var(--grey-50);
+  --color-surface:       var(--white);
+  --color-surface-alt:   var(--grey-100);
+  --color-border:        var(--grey-200);
+  --color-border-strong: var(--ink-500);
+  --color-text:          var(--ink-800);
+  --color-text-heading:  var(--ink-900);
+  --color-text-muted:    var(--ink-600);
+  --color-primary:       var(--red-600);
+  --color-primary-hover: var(--red-700);
+  --color-primary-press: var(--red-800);
+  --color-focus:         var(--red-600);
+  --color-footer-bg:     var(--ink-900);
+  --color-footer-text:   var(--grey-300);
+
+  /* ---- Interaction states (cards, chips, rows) ---- */
+  --color-border-hover:   var(--red-600);   /* one red hairline on the hovered card */
+  --color-border-press:   var(--red-700);
+  --color-surface-hover:  var(--white);     /* surface does not change on hover; border and shadow do */
+  --color-surface-press:  var(--grey-50);
+  --color-chip-hover:     var(--grey-200);  /* unselected filter chip */
+  --color-row-hover:      var(--grey-100);  /* table / list rows */
+  --color-link-hover:     var(--red-700);
+
+  /* ---- Typography ---- */
+  --font-sans: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Barlow Semi Condensed", "Barlow", system-ui, sans-serif;
+
+  --text-display: 700 2.5rem/1.1 var(--font-display);     /* 40/44 */
+  --text-h1:      700 2rem/1.125 var(--font-display);     /* 32/36 */
+  --text-h2:      700 1.5rem/1.17 var(--font-sans);       /* 24/28 */
+  --text-h3:      600 1.25rem/1.3 var(--font-sans);       /* 20/26 */
+  --text-price:   600 1.75rem/1.14 var(--font-display);   /* 28/32 */
+  --text-body-lg: 400 1.125rem/1.56 var(--font-sans);     /* 18/28 */
+  --text-body:    400 1rem/1.5 var(--font-sans);          /* 16/24 */
+  --text-small:   400 0.875rem/1.43 var(--font-sans);     /* 14/20 */
+  --text-label:   600 0.75rem/1.33 var(--font-sans);      /* 12/16, uppercase, +0.06em */
+  --tracking-label: 0.06em;
+  --tracking-heading: -0.01em;
+  --measure: 65ch;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;  /* 4  */
+  --space-2: 0.5rem;   /* 8  */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+
+  --section-pad: var(--space-7);
+  --gutter: var(--space-4);
+  --grid-gap: var(--space-4);
+  --content-max: 75rem; /* 1200 */
+
+  /* ---- Radius ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-pill: 999px;
+
+  /* ---- Elevation ---- */
+  --shadow-1: 0 2px 8px rgba(20, 20, 20, 0.08);
+  --backdrop: rgba(20, 20, 20, 0.85);
+
+  /* ---- Motion ---- */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  /* composed transitions; components use these, not ad-hoc lists */
+  --transition-color: color var(--duration-fast) var(--ease),
+                      background-color var(--duration-fast) var(--ease),
+                      border-color var(--duration-fast) var(--ease);
+  --transition-lift:  box-shadow var(--duration-fast) var(--ease),
+                      transform var(--duration-fast) var(--ease);
+  --transition-photo: transform var(--duration-base) var(--ease);
+  --photo-hover-scale: 1.02;
+
+  /* ---- Component sizes ---- */
+  --btn-h-md: 2.75rem; /* 44 */
+  --btn-h-sm: 2.25rem; /* 36 */
+  --header-h: 4rem;    /* 64 */
+  --chip-h: 1.5rem;    /* 24 */
+  --photo-ratio: 4 / 3;
+}
+
+/* ---- Text size control ----
+   All type and spacing tokens are in rem, so one root font-size change scales
+   the whole page. Two states only. Persisted by the control in localStorage
+   under "mj-text". Media queries use em and are unaffected by this. */
+:root { --text-scale-large: 120%; }
+html[data-text="large"] { font-size: var(--text-scale-large); }
+
+@media (min-width: 60em) { /* 960px */
+  :root {
+    --text-display: 700 3.5rem/1.07 var(--font-display);  /* 56/60 */
+    --text-h1:      700 2.5rem/1.1 var(--font-display);   /* 40/44 */
+    --text-h2:      700 2rem/1.125 var(--font-sans);      /* 32/36 */
+    --section-pad: var(--space-9);
+    --gutter: var(--space-5);
+    --grid-gap: var(--space-5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+  }
+}
