@@ -351,14 +351,6 @@ def content_pages(site: dict, bikes: list[dict]) -> list[tuple[str, dict, Path]]
     })
     pages.append(("service.html", ctx, DOCS / "service" / "index.html"))
 
-    ctx = base_context(site, root="../", page="about")
-    ctx.update({
-        "title": "About", "stats": stats_html(site), "refurbish": list_items(site["refurbish"]),
-        "team": team_html(site), "mike_facts": facts_list(site["mike_facts"]),
-        "citybike_source": esc(site["citybike"]["source"]),
-    })
-    pages.append(("about.html", ctx, DOCS / "about" / "index.html"))
-
     ctx = base_context(site, root="../", page="visit")
     ctx.update({"title": "Visit", "directions": directions_html(site)})
     pages.append(("visit.html", ctx, DOCS / "visit" / "index.html"))
@@ -397,7 +389,8 @@ def base_context(site: dict, root: str, page: str) -> dict:
         "description": "Used motorcycles and scooters in San Francisco, inspected and serviced. Demonstration site.",
     }
     for key in NAV_KEYS:
-        ctx[f"nav_{key}"] = "active" if key == page else ""
+        active = key == page or (key == "bikes" and page == "bike")  # detail pages light up Bikes
+        ctx[f"nav_{key}"] = "active" if active else ""
     return ctx
 
 
@@ -445,16 +438,28 @@ def build(root: Path = ROOT) -> list[Path]:
     for_sale = [b for b in bikes if b["status"] in ("for-sale", "pending")]
     soon = [b for b in bikes if b["status"] == "coming-soon"]
 
-    ctx = base_context(site, root="", page="bikes")
-    ctx["title"] = "Used bikes in San Francisco"
-    ctx["cards"] = "\n".join(card_html(b, "") for b in for_sale)  # all lazy: the hero fills the first screen
-    ctx["soon_cards"] = "\n".join(card_html(b, "") for b in soon)
+    # Landing page: About. The user chose identity ahead of inventory.
+    ctx = base_context(site, root="", page="about")
+    ctx.update({
+        "title": "Used bikes, service and repair in San Francisco",
+        "stats": stats_html(site), "refurbish": list_items(site["refurbish"]),
+        "team": team_html(site, root=""), "mike_facts": facts_list(site["mike_facts"]),
+        "citybike_source": esc(site["citybike"]["source"]),
+    })
+    written.append(page("about.html", ctx, DOCS / "index.html"))
+
+    # Inventory: /bikes/
+    root = "../"
+    ctx = base_context(site, root=root, page="bikes")
+    ctx["title"] = "Bikes for sale"
+    ctx["cards"] = "\n".join(card_html(b, root) for b in for_sale)  # all lazy: the hero fills the first screen
+    ctx["soon_cards"] = "\n".join(card_html(b, root) for b in soon)
     ctx["count"] = str(len(for_sale))
     ctx["filters"] = filter_chips(for_sale)
     ctx["why"] = why_html(site)
     ctx["kymco"] = kymco_html(site)
-    ctx["extra_scripts"] = '<script src="js/filters.js" defer></script>'
-    written.append(page("index.html", ctx, DOCS / "index.html"))
+    ctx["extra_scripts"] = f'<script src="{root}js/filters.js" defer></script>'
+    written.append(page("bikes.html", ctx, DOCS / "bikes" / "index.html"))
 
     for b in for_sale:
         written.append(page("bike.html", bike_page(b, bikes, site), DOCS / "bikes" / b["slug"] / "index.html"))

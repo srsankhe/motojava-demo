@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Used bikes in San Francisco · MotoJava</title>
+<title>Used bikes, service and repair in San Francisco · MotoJava</title>
 <meta name="description" content="Used motorcycles and scooters in San Francisco, inspected and serviced. Demonstration site.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +13,15 @@
 <link rel="stylesheet" href="css/site.css">
 <script>(function(){try{if(localStorage.getItem('mj-text')==='large'){document.documentElement.setAttribute('data-text','large');}}catch(e){}})();</script>
 </head>
-<body data-page="bikes">
+<body data-page="about">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="container header-row">
     <a class="wordmark" href="" aria-label="MotoJava home">Moto<span>Java</span></a>
     <nav class="nav" aria-label="Main">
-      <a class="" href="about/">About</a>
+      <a class="active" href="">About</a>
       <a class="" href="service/">Service</a>
-      <a class="active" href="">Bikes</a>
+      <a class="" href="bikes/">Bikes</a>
       <a class="" href="visit/">Visit</a>
     </nav>
     <div class="header-tools">
@@ -45,9 +45,9 @@
         </button>
       </div>
       <nav class="sheet-nav" aria-label="Main">
-        <a class="" href="about/">About</a>
+        <a class="active" href="">About</a>
         <a class="" href="service/">Service</a>
-        <a class="active" href="">Bikes</a>
+        <a class="" href="bikes/">Bikes</a>
         <a class="" href="visit/">Visit</a>
       </nav>
       <div class="sheet-tools">
@@ -69,760 +69,116 @@
 </header>
 
 <main id="main">
-<section class="hero">
-  <div class="hero-media">
-    <picture>
-      <source media="(max-width: 59.99em)" srcset="img/hero-800.webp">
-      <img src="img/hero.webp" alt="The MotoJava storefront on South Van Ness Avenue" width="1600" height="1000" fetchpriority="high">
-    </picture>
-  </div>
-  <div class="container hero-body">
-    <h1 class="display">Good used bikes. Fair prices.</h1>
-    <p class="lead">Every bike is tuned, inspected and ready to ride. San Francisco.</p>
+<section class="band">
+  <picture class="band-media">
+    <source media="(max-width: 59.99em)" srcset="img/about/storefront-600.webp">
+    <img src="img/about/storefront.webp" alt="" width="1200" height="800" fetchpriority="high">
+  </picture>
+  <div class="container band-body">
+    <h1 class="display">A small shop that puts people on two wheels</h1>
+    <p class="lead">Used bikes, inspected and serviced, sold by riders. South Van Ness since the beginning.</p>
     <div class="row">
-      <a class="btn btn-primary" href="#bikes">See the bikes</a>
-      <a class="btn btn-secondary" href="tel:+14152559527">Call (415) 255-9527</a>
+      <a class="btn btn-primary" href="bikes/">See the bikes</a>
+      <a class="btn btn-secondary" href="visit/">Visit the shop</a>
     </div>
   </div>
 </section>
 
-<section id="bikes" class="section">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h2>Bikes for sale</h2>
-        <p class="small muted">32 bikes · Updated November 7, 2026 · Prices are fair and firm. Taxes and fees extra.</p>
-      </div>
+<section class="section">
+  <div class="container split">
+    <div class="stack">
+      <h2>Why we do this</h2>
+      <p class="lead">Our love of motorcycles started decades ago with the urge to travel and see the world from the saddle.</p>
+      <p class="measure">Anyone who has ridden knows the difference. The scenery is sharper, the air is fresher, and you are that much closer to everything around you. We have helped new riders find the right first bike for years, and we keep a wide mix on the floor: scooters, small standards, cruisers and sport bikes, in a range of sizes and prices.</p>
     </div>
-    <div class="filters" data-filters>
-      <span class="label">Type</span>
-      <button type="button" class="chip chip-filter" data-group="type" data-value="scooter" aria-pressed="false">Scooter</button>
-      <button type="button" class="chip chip-filter" data-group="type" data-value="standard" aria-pressed="false">Standard</button>
-      <button type="button" class="chip chip-filter" data-group="type" data-value="sport" aria-pressed="false">Sport</button>
-      <button type="button" class="chip chip-filter" data-group="type" data-value="cruiser" aria-pressed="false">Cruiser</button>
-      <button type="button" class="chip chip-filter" data-group="type" data-value="adventure" aria-pressed="false">Adventure</button>
-      <button type="button" class="chip chip-filter" data-group="type" data-value="dual-sport" aria-pressed="false">Dual sport</button>
-      <button type="button" class="chip chip-filter" data-group="type" data-value="touring" aria-pressed="false">Touring</button>
-      <button type="button" class="chip chip-filter" data-group="type" data-value="mini" aria-pressed="false">Mini</button>
-      <span class="label">Price</span>
-      <button type="button" class="chip chip-filter" data-group="price" data-value="lt3000" aria-pressed="false">Under $3k</button>
-      <button type="button" class="chip chip-filter" data-group="price" data-value="3000-5000" aria-pressed="false">$3k to $5k</button>
-      <button type="button" class="chip chip-filter" data-group="price" data-value="gt5000" aria-pressed="false">Over $5k</button>
-      <button type="button" class="btn btn-ghost btn-sm" data-clear>Clear</button>
-    </div>
-    <div class="grid" data-grid>
-<a class="card" href="bikes/2018-bmw-c-evolution/" data-type="scooter" data-price="4999" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2018-bmw-c-evolution/01-480.webp" width="480" height="360" alt="2018 BMW C evolution" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2018 BMW C evolution</h3>
-    <p class="spec">15,000 mi · Electric · New charger cord</p>
-    <div class="card-foot">
-      <span class="price">$4,999</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2016-vespa-gtv-300/" data-type="scooter" data-price="3999" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2016-vespa-gtv-300/01-480.webp" width="480" height="360" alt="2016 Vespa GTV 300" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2016 Vespa GTV 300</h3>
-    <p class="spec">6,500 mi · ABS · Low miles</p>
-    <div class="card-foot">
-      <span class="price">$3,999</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2016-bmw-f800gt/" data-type="touring" data-price="4799" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2016-bmw-f800gt/01-480.webp" width="480" height="360" alt="2016 BMW F800GT" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2016 BMW F800GT</h3>
-    <p class="spec">32,000 mi · ABS · Sport touring</p>
-    <div class="card-foot">
-      <span class="price">$4,799</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2023-kawasaki-ninja-400/" data-type="sport" data-price="5399" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2023-kawasaki-ninja-400/01-480.webp" width="480" height="360" alt="2023 Kawasaki Ninja 400" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2023 Kawasaki Ninja 400</h3>
-    <p class="spec">ABS · Very clean · Fun to ride</p>
-    <div class="card-foot">
-      <span class="price">$5,399</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2013-vespa-gts-300/" data-type="scooter" data-price="3899" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2013-vespa-gts-300/01-480.webp" width="480" height="360" alt="2013 Vespa GTS 300 ie" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2013 Vespa GTS 300 ie</h3>
-    <p class="spec">3,700 mi · Low miles</p>
-    <div class="card-foot">
-      <span class="price">$3,899</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2019-kymco-like-150i/" data-type="scooter" data-price="2899" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2019-kymco-like-150i/01-480.webp" width="480" height="360" alt="2019 Kymco Like 150i" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2019 Kymco Like 150i</h3>
-    <p class="spec">1,600 mi · ABS · Noodoe connected dash</p>
-    <div class="card-foot">
-      <span class="price">$2,899</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2015-kawasaki-ninja-300/" data-type="sport" data-price="3299" data-status="pending">
-  <div class="photo"><img src="img/bikes/2015-kawasaki-ninja-300/01-480.webp" width="480" height="360" alt="2015 Kawasaki Ninja 300" loading="lazy">
-    <span class="chip chip-pending">Pending sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2015 Kawasaki Ninja 300</h3>
-    <p class="spec">ABS · Low seat · Fun to ride</p>
-    <div class="card-foot">
-      <span class="price">$3,299</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2018-triumph-street-twin/" data-type="standard" data-price="5599" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2018-triumph-street-twin/01-480.webp" width="480" height="360" alt="2018 Triumph Street Twin" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2018 Triumph Street Twin</h3>
-    <p class="spec">ABS · Low seat</p>
-    <div class="card-foot">
-      <span class="price">$5,599</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2024-honda-trail-125/" data-type="mini" data-price="4099" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2024-honda-trail-125/01-480.webp" width="480" height="360" alt="2024 Honda Trail 125" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2024 Honda Trail 125</h3>
-    <p class="spec">10 mi · Like new · Modern retro</p>
-    <div class="card-foot">
-      <span class="price">$4,099</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2016-honda-cb300f/" data-type="standard" data-price="3799" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2016-honda-cb300f/01-480.webp" width="480" height="360" alt="2016 Honda CB300F" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2016 Honda CB300F</h3>
-    <p class="spec">1,300 mi · Fully serviced · Great first bike</p>
-    <div class="card-foot">
-      <span class="price">$3,799</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2009-kawasaki-versys-650/" data-type="adventure" data-price="3299" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2009-kawasaki-versys-650/01-480.webp" width="480" height="360" alt="2009 Kawasaki Versys 650" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2009 Kawasaki Versys 650</h3>
-    <p class="spec">25,000 mi · Fully serviced · Touring friendly</p>
-    <div class="card-foot">
-      <span class="price">$3,299</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2014-yamaha-fz6r/" data-type="sport" data-price="4499" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2014-yamaha-fz6r/01-480.webp" width="480" height="360" alt="2014 Yamaha FZ6R" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2014 Yamaha FZ6R</h3>
-    <p class="spec">Sport standard</p>
-    <div class="card-foot">
-      <span class="price">$4,499</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2021-honda-rebel-500/" data-type="cruiser" data-price="5999" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2021-honda-rebel-500/01-480.webp" width="480" height="360" alt="2021 Honda Rebel 500" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2021 Honda Rebel 500</h3>
-    <p class="spec">ABS · Custom seat · Excellent condition</p>
-    <div class="card-foot">
-      <span class="price">$5,999</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2007-triumph-bonneville-t100/" data-type="standard" data-price="4299" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2007-triumph-bonneville-t100/01-480.webp" width="480" height="360" alt="2007 Triumph Bonneville T100" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2007 Triumph Bonneville T100</h3>
-    <p class="spec">5,000 mi · Low miles · Very clean</p>
-    <div class="card-foot">
-      <span class="price">$4,299</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2016-honda-cb500x-rally-raid/" data-type="adventure" data-price="4999" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2016-honda-cb500x-rally-raid/01-480.webp" width="480" height="360" alt="2016 Honda CB500X Rally Raid" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2016 Honda CB500X Rally Raid</h3>
-    <p class="spec">24,000 mi · ABS · New tires</p>
-    <div class="card-foot">
-      <span class="price">$4,999</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2024-kawasaki-ninja-500-krt/" data-type="sport" data-price="5799" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2024-kawasaki-ninja-500-krt/01-480.webp" width="480" height="360" alt="2024 Kawasaki Ninja 500 KRT" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2024 Kawasaki Ninja 500 KRT</h3>
-    <p class="spec">5,600 mi · ABS · New tires</p>
-    <div class="card-foot">
-      <span class="price">$5,799</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2022-honda-adv150/" data-type="scooter" data-price="4099" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2022-honda-adv150/01-480.webp" width="480" height="360" alt="2022 Honda ADV150" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2022 Honda ADV150</h3>
-    <p class="spec">4,900 mi · ABS · New tire</p>
-    <div class="card-foot">
-      <span class="price">$4,099</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2024-honda-adv160/" data-type="scooter" data-price="4199" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2024-honda-adv160/01-480.webp" width="480" height="360" alt="2024 Honda ADV160" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2024 Honda ADV160</h3>
-    <p class="spec">527 mi · ABS · Like new</p>
-    <div class="card-foot">
-      <span class="price">$4,199 <s>$5,199</s></span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2014-honda-rebel-250/" data-type="cruiser" data-price="2899" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2014-honda-rebel-250/01-480.webp" width="480" height="360" alt="2014 Honda Rebel 250" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2014 Honda Rebel 250</h3>
-    <p class="spec">Very clean · Low seat · No damage</p>
-    <div class="card-foot">
-      <span class="price">$2,899</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2015-honda-nc700x/" data-type="adventure" data-price="4888" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2015-honda-nc700x/01-480.webp" width="480" height="360" alt="2015 Honda NC700X" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2015 Honda NC700X</h3>
-    <p class="spec">5,295 mi · Low miles · New tires</p>
-    <div class="card-foot">
-      <span class="price">$4,888</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2014-honda-grom-125/" data-type="mini" data-price="2699" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2014-honda-grom-125/01-480.webp" width="480" height="360" alt="2014 Honda Grom 125" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2014 Honda Grom 125</h3>
-    <p class="spec">Very clean · Low seat · Four-speed with clutch</p>
-    <div class="card-foot">
-      <span class="price">$2,699</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2007-vespa-lxv-150/" data-type="scooter" data-price="2999" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2007-vespa-lxv-150/01-480.webp" width="480" height="360" alt="2007 Vespa LXV 150" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2007 Vespa LXV 150</h3>
-    <p class="spec">Passenger backrest · Top box</p>
-    <div class="card-foot">
-      <span class="price">$2,999</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2006-kawasaki-ninja-650r/" data-type="sport" data-price="3999" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2006-kawasaki-ninja-650r/01-480.webp" width="480" height="360" alt="2006 Kawasaki Ninja 650R" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2006 Kawasaki Ninja 650R</h3>
-    <p class="spec">14,000 mi · Very clean</p>
-    <div class="card-foot">
-      <span class="price">$3,999</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2013-triumph-bonneville-se/" data-type="standard" data-price="4999" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2013-triumph-bonneville-se/01-480.webp" width="480" height="360" alt="2013 Triumph Bonneville SE" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2013 Triumph Bonneville SE</h3>
-    <p class="spec">Low seat · Low miles · Extras</p>
-    <div class="card-foot">
-      <span class="price">$4,999</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2014-honda-cbr500r/" data-type="sport" data-price="5199" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2014-honda-cbr500r/01-480.webp" width="480" height="360" alt="2014 Honda CBR500R" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2014 Honda CBR500R</h3>
-    <p class="spec">20,000 mi · ABS · New tires</p>
-    <div class="card-foot">
-      <span class="price">$5,199</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2014-honda-cb500f/" data-type="standard" data-price="4299" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2014-honda-cb500f/01-480.webp" width="480" height="360" alt="2014 Honda CB500F" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2014 Honda CB500F</h3>
-    <p class="spec">1,200 mi · Great first bike · Low miles</p>
-    <div class="card-foot">
-      <span class="price">$4,299</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2007-suzuki-sv650/" data-type="standard" data-price="3999" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2007-suzuki-sv650/01-480.webp" width="480" height="360" alt="2007 Suzuki SV650" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2007 Suzuki SV650</h3>
-    <p class="spec">Fully serviced · Aftermarket pipe</p>
-    <div class="card-foot">
-      <span class="price">$3,999</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2014-harley-davidson-heritage-softail/" data-type="cruiser" data-price="9999" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2014-harley-davidson-heritage-softail/01-480.webp" width="480" height="360" alt="2014 Harley-Davidson Heritage Softail" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2014 Harley-Davidson Heritage Softail</h3>
-    <p class="spec">19,000 mi · Pipes · Touring bags</p>
-    <div class="card-foot">
-      <span class="price">$9,999</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2022-kawasaki-klr650/" data-type="dual-sport" data-price="4899" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2022-kawasaki-klr650/01-480.webp" width="480" height="360" alt="2022 Kawasaki KLR650" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2022 Kawasaki KLR650</h3>
-    <p class="spec">ABS · Under 1,000 miles · Fuel injected</p>
-    <div class="card-foot">
-      <span class="price">$4,899</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2002-yamaha-v-star-250/" data-type="cruiser" data-price="2699" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2002-yamaha-v-star-250/01-480.webp" width="480" height="360" alt="2002 Yamaha V Star 250" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2002 Yamaha V Star 250</h3>
-    <p class="spec">Great first bike · Fully serviced · New tire and battery</p>
-    <div class="card-foot">
-      <span class="price">$2,699</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2012-honda-shadow-750-phantom/" data-type="cruiser" data-price="4799" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2012-honda-shadow-750-phantom/01-480.webp" width="480" height="360" alt="2012 Honda Shadow 750 Phantom" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2012 Honda Shadow 750 Phantom</h3>
-    <p class="spec">8,000 mi · Saddlebags · Low seat</p>
-    <div class="card-foot">
-      <span class="price">$4,799</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-<a class="card" href="bikes/2015-vespa-primavera-150/" data-type="scooter" data-price="3888" data-status="for-sale">
-  <div class="photo"><img src="img/bikes/2015-vespa-primavera-150/01-480.webp" width="480" height="360" alt="2015 Vespa Primavera 150" loading="lazy">
-    <span class="chip chip-sale">For sale</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2015 Vespa Primavera 150</h3>
-    <p class="spec"></p>
-    <div class="card-foot">
-      <span class="price">$3,888</span>
-      <span class="btn btn-ghost btn-sm">Details ›</span>
-    </div>
-  </div>
-</a>
-
-    </div>
-    <p class="empty" data-empty hidden>No bikes match. Call us, inventory changes daily.</p>
+    <figure class="photo-card">
+      <img src="img/about/sidewalk-600.webp" srcset="img/about/sidewalk-600.webp 600w, img/about/sidewalk.webp 1200w" sizes="(max-width: 59.99em) 100vw, 560px" width="1200" height="800" alt="A cruiser parked in front of the MotoJava signs" loading="lazy">
+      <figcaption class="small muted">Out front on South Van Ness. Every bike gets its photos taken here.</figcaption>
+    </figure>
   </div>
 </section>
 
-<section id="soon" class="section section-alt">
+<section class="section section-dark">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <h2>Arriving soon</h2>
-        <p class="small muted">In the shop now, not yet ready for sale. Come by and have a look.</p>
-      </div>
-    </div>
-    <div class="scroller">
-<div class="card card-soon" data-type="dual-sport" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2009 Kawasaki KLX250</h3>
-    <p class="spec">Lightweight</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202009%20Kawasaki%20KLX250%20ready%20yet%3F">Ask ›</a>
+    <div class="stats">
+      <div class="stat"><span class="stat-value">925+</span><span class="label">Bikes sold</span></div>
+      <div class="stat"><span class="stat-value">37+</span><span class="label">Years of experience</span></div>
+      <div class="stat"><span class="stat-value">700+</span><span class="label">First bikes for new riders</span></div>
+      <div class="stat"><span class="stat-value">46</span><span class="label">Countries toured</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="card card-soon" data-type="cruiser" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2023 Honda Rebel 500</h3>
-    <p class="spec">2,000 mi · ABS</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202023%20Honda%20Rebel%20500%20ready%20yet%3F">Ask ›</a>
+<section class="section">
+  <div class="container split split-reverse">
+    <div class="stack">
+      <h2>Every bike, before it goes on the floor</h2>
+      <ul class="checklist">
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Tune-up</span></li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Manufacturer recommended services brought up to date</span></li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>37-point inspection</span></li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Safety check, at no extra charge</span></li>
+      </ul>
+      <p class="muted measure">Many shops charge extra for this on top of the quoted price. We don't.</p>
     </div>
+    <figure class="photo-card">
+      <img src="img/about/workbench.webp" width="400" height="300" alt="A motorcycle stripped down on the workbench" loading="lazy">
+      <figcaption class="small muted">A bike at the half-way point of a refurbish.</figcaption>
+    </figure>
   </div>
-</div>
+</section>
 
-<div class="card card-soon" data-type="touring" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2001 Honda Gold Wing 1800</h3>
-    <p class="spec">2,500 mi · Fully serviced</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202001%20Honda%20Gold%20Wing%201800%20ready%20yet%3F">Ask ›</a>
+<section class="section section-alt">
+  <div class="container split">
+    <div class="stack">
+      <h2>Selling your bike?</h2>
+      <p class="measure">Ride it over for an inspection. We agree a fair price, you sign the title, and we pay you on the spot. No listings, no strangers at your door.</p>
     </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="dual-sport" data-price="1999" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2009 Kawasaki KLR650</h3>
-    <p class="spec">Bags · Extras · Good first bike</p>
-    <div class="card-foot">
-      <span class="price">$1,999</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202009%20Kawasaki%20KLR650%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="cruiser" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2023 Honda Rebel 500</h3>
-    <p class="spec">ABS · Custom seat</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202023%20Honda%20Rebel%20500%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="cruiser" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2014 Harley-Davidson Heritage Softail Classic</h3>
-    <p class="spec"></p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202014%20Harley-Davidson%20Heritage%20Softail%20Classic%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="sport" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2013 Yamaha FZ6R</h3>
-    <p class="spec">Top box</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202013%20Yamaha%20FZ6R%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="standard" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2016 Honda CB500F</h3>
-    <p class="spec">1,800 mi · ABS</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202016%20Honda%20CB500F%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="cruiser" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">1997 Honda Magna 750</h3>
-    <p class="spec"></p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%201997%20Honda%20Magna%20750%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="standard" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2015 Honda CB300F</h3>
-    <p class="spec">600 mi</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202015%20Honda%20CB300F%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="cruiser" data-price="3299" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2002 Honda Shadow Spirit 1100</h3>
-    <p class="spec">Custom</p>
-    <div class="card-foot">
-      <span class="price">$3,299</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202002%20Honda%20Shadow%20Spirit%201100%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="standard" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2016 Ducati Scrambler 800</h3>
-    <p class="spec">19,000 mi</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202016%20Ducati%20Scrambler%20800%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="standard" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2003 Honda Nighthawk 750</h3>
-    <p class="spec">Like new</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202003%20Honda%20Nighthawk%20750%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
-<div class="card card-soon" data-type="scooter" data-price="" data-status="coming-soon">
-  <div class="photo soon"><svg class="i soon-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
-    <span class="chip chip-soon">Coming soon</span>
-  </div>
-  <div class="card-body">
-    <h3 class="h3">2019 Kymco Like 150</h3>
-    <p class="spec">Light and small</p>
-    <div class="card-foot">
-      <span class="price muted price-soon">Price on arrival</span>
-      <a class="btn btn-ghost btn-sm" href="sms:+14152559527?&body=Hi%20MotoJava%2C%20is%20the%202019%20Kymco%20Like%20150%20ready%20yet%3F">Ask ›</a>
-    </div>
-  </div>
-</div>
-
+    <div class="stack">
+      <h2>Buying one?</h2>
+      <p class="measure">Spend a few minutes with us trying bikes to find what suits you. We prepare the DMV title transfer and registration so you don't spend an afternoon in line.</p>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="section-head"><h2>Why MotoJava</h2></div>
-    <div class="grid">
-      <div class="why"><span class="why-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><h3 class="h3">Inspected and serviced</h3><p class="small muted">Every bike gets a tune-up, a 37-point inspection and a safety check before it goes on the floor.</p></div>
-      <div class="why"><span class="why-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><h3 class="h3">Paperwork handled</h3><p class="small muted">We prepare the DMV title transfer and registration so you skip the line.</p></div>
-      <div class="why"><span class="why-icon"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1"/></svg></span><h3 class="h3">Fair and firm</h3><p class="small muted">Prices are set fairly and stay there. Taxes and fees are extra and explained up front.</p></div>
+    <div class="section-head"><h2>The team</h2></div>
+    <div class="team">
+      <div class="person"><img class="avatar avatar-photo" src="img/team/mike.webp" width="320" height="320" alt="Mike Ritter" loading="lazy"><div class="person-text"><h3 class="h3">Mike Ritter</h3><span class="label">Co-owner</span><p class="small">Mike has ridden for more than 25 years and toured in 46 countries. He has been a shop mechanic, a salesman and a certified riding instructor, and ran his own school, Moto Mike Learn to Ride. If you are new to riding, Mike is the person to talk to.</p></div></div>
+      <div class="person"><img class="avatar avatar-photo" src="img/team/kim.webp" width="320" height="320" alt="Kim Danner" loading="lazy"><div class="person-text"><h3 class="h3">Kim Danner</h3><span class="label">Co-owner</span><p class="small">Kim came to riding later than Mike and took to it fast. She runs the shop with him and still says learning to ride was an easy choice.</p></div></div>
     </div>
   </div>
 </section>
 
-<section id="kymco" class="section section-alt">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h2>New from Kymco</h2>
-        <p class="small muted">We are a Kymco dealer. New scooters with a two-year warranty.</p>
-      </div>
-    </div>
-    <div class="grid">
-      <div class="callout"><span class="label">New</span><h3 class="h3">2026 Kymco Like 150i ABS</h3><span class="price">$3,299</span><span class="small">83 mpg</span><span class="small muted">$350 freight plus tax and fees. Two-year warranty.</span></div>
-      <div class="callout"><span class="label">New</span><h3 class="h3">2026 Kymco People S 150i ABS</h3><span class="price">$3,799</span><span class="small">83 mpg</span><span class="small muted">$350 freight plus tax and fees. Two-year warranty.</span></div>
-      <div class="callout"><span class="label">New</span><h3 class="h3">2024 Kymco CV3 550</h3><span class="price">$11,999</span><span class="small">Three wheels, no motorcycle license required</span><span class="small muted">Order only. $450 freight plus tax and fees. Two-year warranty.</span></div>
+<section class="section section-alt">
+  <div class="container split">
+    <figure class="photo-card">
+      <img src="img/about/mike-goldwing.webp" width="640" height="481" alt="Mike with a Honda Gold Wing on a street corner" loading="lazy">
+      <figcaption class="small muted">Mike and a Gold Wing, his favorite. Adapted from CityBike, August 2018.</figcaption>
+    </figure>
+    <div class="stack">
+      <h2>Moto Mike, in brief</h2>
+      <ul class="facts-list">
+        <li><strong>First bike at 14.</strong> A Honda Spree scooter, bought while shopping for a car. He named it Killing Spree.</li>
+        <li><strong>Shop floor to showroom.</strong> Wrenched at Scuderia during culinary school, then sold bikes at Motorcycles Unlimited.</li>
+        <li><strong>Teacher.</strong> Certified MSF instructor who started his own school, Moto Mike Learn to Ride.</li>
+        <li><strong>Traveler.</strong> 46 countries by motorcycle, a year across Europe, nine trips to the Isle of Man.</li>
+        <li><strong>Nighthawk 250 evangelist.</strong> More than 700 of them have gone to new riders through his hands.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="visit" class="section">
-  <div class="container visit-grid">
+<section class="section">
+  <div class="container cta-band">
     <div class="stack">
-      <h2>Come by the shop</h2>
-      <p class="lead">145 South Van Ness Avenue<br>San Francisco, CA 94103</p>
-      <p class="measure muted">Next to the Dainese store, across from Tap Plastics. Two blocks off Market Street.</p>
-      <div class="row">
-        <a class="btn btn-primary" href="tel:+14152559527">Call (415) 255-9527</a>
-        <a class="btn btn-secondary" href="visit/">Directions</a>
-      </div>
+      <h2>Come say hi</h2>
+      <p class="muted">Tue to Fri 11 am to 6 pm. Sat 12 pm to 5 pm. Sun and Mon by appointment.</p>
     </div>
-    <div class="stack">
-      <h3 class="h3">Hours</h3>
-      <dl class="hours" data-hours>
-  <div data-day="Sun"><dt>Sun</dt><dd>By appointment</dd></div>
-  <div data-day="Mon"><dt>Mon</dt><dd>By appointment</dd></div>
-  <div data-day="Tue"><dt>Tue</dt><dd>11 am to 6 pm</dd></div>
-  <div data-day="Wed"><dt>Wed</dt><dd>11 am to 6 pm</dd></div>
-  <div data-day="Thu"><dt>Thu</dt><dd>11 am to 6 pm</dd></div>
-  <div data-day="Fri"><dt>Fri</dt><dd>11 am to 6 pm</dd></div>
-  <div data-day="Sat"><dt>Sat</dt><dd>12 pm to 5 pm</dd></div>
-</dl>
-
+    <div class="row">
+      <a class="btn btn-primary" href="tel:+14152559527">Call (415) 255-9527</a>
+      <a class="btn btn-secondary" href="visit/">Directions</a>
     </div>
   </div>
 </section>
@@ -857,9 +213,9 @@
     </div>
     <div>
       <h2 class="footer-h">Browse</h2>
-      <a class="footer-link" href="about/">About</a>
+      <a class="footer-link" href="">About</a>
       <a class="footer-link" href="service/">Service</a>
-      <a class="footer-link" href="">Bikes</a>
+      <a class="footer-link" href="bikes/">Bikes</a>
       <a class="footer-link" href="visit/">Visit</a>
     </div>
     <div>
@@ -875,8 +231,8 @@
   </div>
 </footer>
 
-<div class="callbar" data-callbar><a class="btn btn-primary" href="tel:+14152559527">Call</a><a class="btn btn-secondary" href="sms:+14152559527">Text</a></div>
+
 <script src="js/site.js" defer></script>
-<script src="js/filters.js" defer></script>
+
 </body>
 </html>
